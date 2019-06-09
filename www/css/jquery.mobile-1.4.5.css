@@ -726,6 +726,14 @@ html.ui-nosvg .ui-btn.ui-checkbox-on:after {
 /* Globals */
 /* Font
 -----------------------------------------------------------------------------------------------------------*/
+@font-face{
+  font-family: 'Roboto';
+  src: url('Roboto-Regular.ttf');
+}
+@font-face{
+	font-family: 'Abel';
+	src: url('Abel-Regular.ttf');
+}
 html {
 	font-size: 100%;
 }
@@ -737,13 +745,13 @@ button,
 .ui-btn {
 	font-size: 1em;
 	line-height: 1.3;
-	font-family: sans-serif /*{global-font-family}*/;
+	font-family: 'Roboto', sans-serif;
 }
 legend,
 .ui-input-text input,
 .ui-input-search input {
 	color: inherit;
-	text-shadow: inherit;
+
 }
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,
@@ -786,7 +794,7 @@ div.ui-controlgroup-label {
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn,
 label.ui-btn {
-	font-weight: bold;
+	font-weight: 100;
 	border-width: 1px;
 	border-style: solid;
 }
@@ -917,7 +925,7 @@ html .ui-alt-icon .ui-radio-off:after {
 	width: 8px;
 	height: 8px;
 	border-width: 5px;
-	border-style: solid; 
+	border-style: solid;
 }
 .ui-alt-icon.ui-btn.ui-radio-on:after,
 .ui-alt-icon .ui-btn.ui-radio-on:after {
@@ -940,7 +948,7 @@ html body .ui-group-theme-a .ui-bar-inherit {
 	background-color: 			#e9e9e9 /*{a-bar-background-color}*/;
 	border-color:	 		#ddd /*{a-bar-border}*/;
 	color: 					#333 /*{a-bar-color}*/;
-	text-shadow: 0 /*{a-bar-shadow-x}*/ 1px /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ 	#eee /*{a-bar-shadow-color}*/;
+
 	font-weight: bold;
 }
 .ui-bar-a {
@@ -954,7 +962,7 @@ html body .ui-group-theme-a .ui-bar-inherit {
 	background-color: 			#f9f9f9 /*{a-page-background-color}*/;
 	border-color:	 		#bbb /*{a-page-border}*/;
 	color: 					#333 /*{a-page-color}*/;
-	text-shadow: 0 /*{a-page-shadow-x}*/ 1px /*{a-page-shadow-y}*/ 0 /*{a-page-shadow-radius}*/ 	#f3f3f3 /*{a-page-shadow-color}*/;
+
 }
 /* Body: Read-only lists, text inputs, collapsible content */
 .ui-body-a,
@@ -966,7 +974,7 @@ html .ui-panel-page-container-a {
 	background-color: 			#fff /*{a-body-background-color}*/;
 	border-color:	 		#ddd /*{a-body-border}*/;
 	color: 					#333 /*{a-body-color}*/;
-	text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ 	#f3f3f3 /*{a-body-shadow-color}*/;
+
 }
 .ui-body-a {
 	border-width: 1px;
@@ -1013,7 +1021,7 @@ html head + body .ui-btn.ui-btn-a:visited {
 	background-color: 			#f6f6f6 /*{a-bup-background-color}*/;
 	border-color:	 		#ddd /*{a-bup-border}*/;
 	color: 					#333 /*{a-bup-color}*/;
-	text-shadow: 0 /*{a-bup-shadow-x}*/ 1px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/ #f3f3f3 /*{a-bup-shadow-color}*/;
+
 }
 /* Button hover */
 .ui-page-theme-a .ui-btn:hover,
@@ -1024,7 +1032,7 @@ html head + body .ui-btn.ui-btn-a:hover {
 	background-color: 			#ededed /*{a-bhover-background-color}*/;
 	border-color:	 		#ddd /*{a-bhover-border}*/;
 	color: 					#333 /*{a-bhover-color}*/;
-	text-shadow: 0 /*{a-bhover-shadow-x}*/ 1px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ #f3f3f3 /*{a-bhover-shadow-color}*/;
+
 }
 /* Button down */
 .ui-page-theme-a .ui-btn:active,
@@ -1035,7 +1043,7 @@ html head + body .ui-btn.ui-btn-a:active {
 	background-color: 			#e8e8e8 /*{a-bdown-background-color}*/;
 	border-color:	 		#ddd /*{a-bdown-border}*/;
 	color: 					#333 /*{a-bdown-color}*/;
-	text-shadow: 0 /*{a-bdown-shadow-x}*/ 1px /*{a-bdown-shadow-y}*/ 0 /*{a-bdown-shadow-radius}*/ #f3f3f3 /*{a-bdown-shadow-color}*/;
+
 }
 /* Active button */
 .ui-page-theme-a .ui-btn.ui-btn-active,
@@ -1064,7 +1072,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	background-color: 		#3388cc /*{a-active-background-color}*/;
 	border-color:	 		#3388cc /*{a-active-border}*/;
 	color: 					#fff /*{a-active-color}*/;
-	text-shadow: 0 /*{a-active-shadow-x}*/ 1px /*{a-active-shadow-y}*/ 0 /*{a-active-shadow-radius}*/ #005599 /*{a-active-shadow-color}*/;
+
 }
 /* Active radio button icon */
 .ui-page-theme-a .ui-radio-on:after,
@@ -1099,10 +1107,10 @@ html head + body .ui-body-a.ui-focus {
 html .ui-bar-b .ui-bar-inherit,
 html .ui-body-b .ui-bar-inherit,
 html body .ui-group-theme-b .ui-bar-inherit {
-	background-color: 			#1d1d1d /*{b-bar-background-color}*/;
+	background-color: 			#0f0f0f /*{b-bar-background-color}*/;
 	border-color:	 		#1b1b1b /*{b-bar-border}*/;
 	color: 					#fff /*{b-bar-color}*/;
-	text-shadow: 0 /*{b-bar-shadow-x}*/ 1px /*{b-bar-shadow-y}*/ 0 /*{b-bar-shadow-radius}*/ 	#111 /*{b-bar-shadow-color}*/;
+
 	font-weight: bold;
 }
 .ui-bar-b {
@@ -1113,10 +1121,10 @@ html body .ui-group-theme-b .ui-bar-inherit {
 .ui-overlay-b,
 .ui-page-theme-b,
 .ui-page-theme-b .ui-panel-wrapper {
-	background-color: 			#252525 /*{b-page-background-color}*/;
+	background-color: 			#191a1a /*{b-page-background-color}*/;
 	border-color:	 		#454545 /*{b-page-border}*/;
 	color: 					#fff /*{b-page-color}*/;
-	text-shadow: 0 /*{b-page-shadow-x}*/ 1px /*{b-page-shadow-y}*/ 0 /*{b-page-shadow-radius}*/ 	#111 /*{b-page-shadow-color}*/;
+
 }
 /* Body: Read-only lists, text inputs, collapsible content */
 .ui-body-b,
@@ -1126,9 +1134,9 @@ html .ui-body-b .ui-body-inherit,
 html body .ui-group-theme-b .ui-body-inherit,
 html .ui-panel-page-container-b {
 	background-color: 			#2a2a2a /*{b-body-background-color}*/;
-	border-color:	 		#1d1d1d /*{b-body-border}*/;
+	border-color:	 		#393a3b /*{b-body-border}*/;
 	color: 					#fff /*{b-body-color}*/;
-	text-shadow: 0 /*{b-body-shadow-x}*/ 1px /*{b-body-shadow-y}*/ 0 /*{b-body-shadow-radius}*/ 	#111 /*{b-body-shadow-color}*/;
+
 }
 .ui-body-b {
 	border-width: 1px;
@@ -1139,14 +1147,15 @@ html .ui-panel-page-container-b {
 html .ui-bar-b a,
 html .ui-body-b a,
 html body .ui-group-theme-b a {
-	color: #22aadd /*{b-link-color}*/;
-	font-weight: bold;
+	color: #19a1d6 /*{b-link-color}*/;
+	font-weight: 100;
+	text-decoration: none;
 }
 .ui-page-theme-b a:visited,
 html .ui-bar-b a:visited,
 html .ui-body-b a:visited,
 html body .ui-group-theme-b a:visited {
-    color: #22aadd /*{b-link-visited}*/;
+    color: #19a1d6 /*{b-link-visited}*/;
 }
 .ui-page-theme-b a:hover,
 html .ui-bar-b a:hover,
@@ -1172,10 +1181,10 @@ html .ui-bar-b .ui-btn:visited,
 html .ui-body-b .ui-btn:visited,
 html body .ui-group-theme-b .ui-btn:visited,
 html head + body .ui-btn.ui-btn-b:visited {
-	background-color: 			#333 /*{b-bup-background-color}*/;
+	background-color: 			#ff962e /*{b-bup-background-color}*/;
 	border-color:	 		#1f1f1f /*{b-bup-border}*/;
 	color: 					#fff /*{b-bup-color}*/;
-	text-shadow: 0 /*{b-bup-shadow-x}*/ 1px /*{b-bup-shadow-y}*/ 0 /*{b-bup-shadow-radius}*/ #111 /*{b-bup-shadow-color}*/;
+
 }
 /* Button hover */
 .ui-page-theme-b .ui-btn:hover,
@@ -1186,7 +1195,7 @@ html head + body .ui-btn.ui-btn-b:hover {
 	background-color: 			#373737 /*{b-bhover-background-color}*/;
 	border-color:	 		#1f1f1f /*{b-bhover-border}*/;
 	color: 					#fff /*{b-bhover-color}*/;
-	text-shadow: 0 /*{b-bhover-shadow-x}*/ 1px /*{b-bhover-shadow-y}*/ 0 /*{b-bhover-shadow-radius}*/ #111 /*{b-bhover-shadow-color}*/;
+
 }
 /* Button down */
 .ui-page-theme-b .ui-btn:active,
@@ -1197,7 +1206,7 @@ html head + body .ui-btn.ui-btn-b:active {
 	background-color: 			#404040 /*{b-bdown-background-color}*/;
 	border-color:	 		#1f1f1f /*{b-bdown-border}*/;
 	color: 					#fff /*{b-bdown-color}*/;
-	text-shadow: 0 /*{b-bdown-shadow-x}*/ 1px /*{b-bdown-shadow-y}*/ 0 /*{b-bdown-shadow-radius}*/ #111 /*{b-bdown-shadow-color}*/;
+
 }
 /* Active button */
 .ui-page-theme-b .ui-btn.ui-btn-active,
@@ -1226,7 +1235,7 @@ html body div.ui-slider-track.ui-body-b .ui-btn-active {
 	background-color: 		#22aadd /*{b-active-background-color}*/;
 	border-color:	 		#22aadd /*{b-active-border}*/;
 	color: 					#fff /*{b-active-color}*/;
-	text-shadow: 0 /*{b-active-shadow-x}*/ 1px /*{b-active-shadow-y}*/ 0 /*{b-active-shadow-radius}*/ #0088bb /*{b-active-shadow-color}*/;
+
 }
 /* Active radio button icon */
 .ui-page-theme-b .ui-radio-on:after,
@@ -1249,9 +1258,8 @@ html .ui-body-b .ui-focus,
 html body .ui-group-theme-b .ui-focus,
 html head + body .ui-btn-b.ui-focus,
 html head + body .ui-body-b.ui-focus {
-	-webkit-box-shadow: 0 0 12px 	#22aadd /*{b-active-background-color}*/;
-	-moz-box-shadow: 0 0 12px 		#22aadd /*{b-active-background-color}*/;
-	box-shadow: 0 0 12px 			#22aadd /*{b-active-background-color}*/;
+
+	border: 1px solid #ff962e;
 }
 /* Structure */
 /* Disabled
@@ -1480,6 +1488,7 @@ div.ui-mobile-viewport {
 	overflow: hidden;
 	white-space: nowrap;
 	outline: 0 !important;
+	font-weight: 100;
 }
 .ui-footer .ui-title {
 	margin: 0 1em;
@@ -1559,7 +1568,7 @@ div.ui-mobile-viewport {
 .ui-mini .ui-btn-icon-notext,
 .ui-header .ui-btn-icon-notext,
 .ui-footer .ui-btn-icon-notext {
-	font-size: 16px;	
+	font-size: 16px;
 	padding: 0;
 }
 .ui-btn-inline {
@@ -2255,11 +2264,11 @@ button.ui-btn-icon-notext,
 	-webkit-backface-visibility: hidden;
 	-webkit-transform: translateX(0); /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
 	-webkit-transform-origin: 0;
-	
+
 	-moz-backface-visibility: hidden;
 	-moz-transform: translateX(0);
 	-moz-transform-origin: 0;
-	
+
 	backface-visibility :hidden;
 	transform: translateX(0);
 	transform-origin: 0;
@@ -2282,7 +2291,7 @@ button.ui-btn-icon-notext,
 	-moz-animation-duration: 250ms;
 	animation-name: flipintoright;
 	animation-duration: 250ms;
-	
+
 }
 .turn.out.reverse {
 	-webkit-transform: rotateY(90deg) scale(.9);
@@ -2349,17 +2358,17 @@ button.ui-btn-icon-notext,
 .flow {
 	-webkit-transform-origin: 50% 30%;
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,.4);
-	-moz-transform-origin: 50% 30%;	
+	-moz-transform-origin: 50% 30%;
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,.4);
-	transform-origin: 50% 30%;	
+	transform-origin: 50% 30%;
 	box-shadow: 0 0 20px rgba(0,0,0,.4);
 }
 .ui-dialog.flow {
 	-webkit-transform-origin: none;
 	-webkit-box-shadow: none;
-	-moz-transform-origin: none;	
+	-moz-transform-origin: none;
 	-moz-box-shadow: none;
-	transform-origin: none;	
+	transform-origin: none;
 	box-shadow: none;
 }
 .flow.out {
@@ -2619,7 +2628,7 @@ li.ui-block-e {
 }
 .ui-grid-solo > .ui-block-a {
 	width: 100%;
-	float: none; 
+	float: none;
 }
 /* preset breakpoint to switch to stacked grid styles below 35em (560px) */
 @media (max-width: 35em) {
@@ -2628,8 +2637,8 @@ li.ui-block-e {
 	.ui-responsive > .ui-block-c,
 	.ui-responsive > .ui-block-d,
 	.ui-responsive > .ui-block-e {
-		width: 100%; 
-		float: none; 
+		width: 100%;
+		float: none;
 	}
 }
 /* fixed page header & footer configuration */
@@ -2700,7 +2709,7 @@ li.ui-block-e {
 	clip: rect(1px,1px,1px,1px);
 }
 .ui-header-fixed .ui-btn,
-.ui-footer-fixed .ui-btn { 
+.ui-footer-fixed .ui-btn {
 	z-index: 10;
 }
 /* workarounds for other widgets */
@@ -2804,7 +2813,7 @@ li.ui-block-e {
 	border: 0;
 	outline: 0;
 	-webkit-border-radius: inherit;
-	border-radius: inherit;	
+	border-radius: inherit;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	cursor: pointer;
@@ -2866,7 +2875,7 @@ li.ui-block-e {
 }
 .ui-collapsible-content {
 	display: block;
-	margin: 0;	
+	margin: 0;
 	padding: .5em 1em;
 }
 .ui-collapsible-themed-content .ui-collapsible-content {
@@ -2892,27 +2901,27 @@ li.ui-block-e {
 }
 .ui-collapsible-heading,
 .ui-collapsible-heading > .ui-btn {
-	-webkit-border-radius: inherit;	
-	border-radius: inherit;	
+	-webkit-border-radius: inherit;
+	border-radius: inherit;
 }
 .ui-collapsible-set .ui-collapsible.ui-first-child {
-	-webkit-border-top-right-radius: inherit;	
+	-webkit-border-top-right-radius: inherit;
 	border-top-right-radius: inherit;
-	-webkit-border-top-left-radius: inherit;	
-	border-top-left-radius: inherit;		
+	-webkit-border-top-left-radius: inherit;
+	border-top-left-radius: inherit;
 }
 .ui-collapsible-content,
 .ui-collapsible-set .ui-collapsible.ui-last-child {
-	-webkit-border-bottom-right-radius: inherit;	
+	-webkit-border-bottom-right-radius: inherit;
 	border-bottom-right-radius: inherit;
-	-webkit-border-bottom-left-radius: inherit;	
-	border-bottom-left-radius: inherit;		
+	-webkit-border-bottom-left-radius: inherit;
+	border-bottom-left-radius: inherit;
 }
 .ui-collapsible-themed-content:not(.ui-collapsible-collapsed) > .ui-collapsible-heading {
-	-webkit-border-bottom-right-radius: 0;	
+	-webkit-border-bottom-right-radius: 0;
 	border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;	
-	border-bottom-left-radius: 0;		
+	-webkit-border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
 }
 .ui-collapsible-set .ui-collapsible {
 	margin: -1px -1em 0;
@@ -3062,23 +3071,23 @@ fieldset.ui-controlgroup {
 	position: relative;
 	top: -1em;
 }
-.ui-dialog-contain > .ui-header, 
-.ui-dialog-contain > .ui-content, 
-.ui-dialog-contain > .ui-footer { 
+.ui-dialog-contain > .ui-header,
+.ui-dialog-contain > .ui-content,
+.ui-dialog-contain > .ui-footer {
 	display: block;
-	position: relative; 
+	position: relative;
 	width: auto;
 	margin: 0;
 }
 .ui-dialog-contain > .ui-header {
 	overflow: hidden;
-	z-index: 10; 
+	z-index: 10;
 	padding: 0;
 	border-top-width: 0;
 }
 .ui-dialog-contain > .ui-footer {
-	z-index: 10; 
-	padding: 0 1em; 
+	z-index: 10;
+	padding: 0 1em;
 	border-bottom-width: 0;
 }
 .ui-popup-open .ui-header-fixed,
@@ -3200,7 +3209,7 @@ fieldset.ui-controlgroup {
 }
 .ui-popup > .ui-btn-left,
 .ui-popup > .ui-btn-right {
-	position: absolute; 
+	position: absolute;
 	top: -11px;
 	margin: 0;
 	z-index: 1101;
@@ -3277,7 +3286,7 @@ fieldset.ui-controlgroup {
 /**
  * For each side, the arrow is twice the desired size and its corner is aligned
  * with the edge of the container:
- *                                           
+ *
  *           /\         /\                +----+       /\
  *          /  \       /  \               | /\ |top   /  \
  *      +----+  \     /  +----+       +-->|/  \|     /    \
@@ -3326,7 +3335,7 @@ fieldset.ui-controlgroup {
     margin-left: -5.857864376269049px;
     margin-top: -4.142135623730951px;
 }
- 
+
 .ui-popup-arrow-container.ui-popup-arrow-l.ie .ui-popup-arrow {
     margin-left: -7.0710678118654755px;
     margin-top: -5.857864376269049px;
@@ -3444,7 +3453,7 @@ fieldset.ui-controlgroup {
 	max-height: 100%;
 	outline: 0;
 	-webkit-border-radius: inherit;
-	border-radius: inherit;	
+	border-radius: inherit;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	cursor: pointer;
@@ -3461,7 +3470,7 @@ fieldset.ui-controlgroup {
 .ui-select .ui-state-disabled select {
 	display: none;
 }
-/* Because we add all classes of the select and option elements to the span... */ 
+/* Because we add all classes of the select and option elements to the span... */
 .ui-select span.ui-state-disabled {
 	filter: Alpha(Opacity=100);
 	opacity: 1;
@@ -3528,7 +3537,7 @@ fieldset.ui-controlgroup {
 .ui-selectmenu .ui-selectmenu-list {
 	margin: 0;
 	-webkit-border-radius: inherit;
-	border-radius: inherit;	
+	border-radius: inherit;
 }
 .ui-header:not(.ui-screen-hidden) + .ui-selectmenu-list {
 	-webkit-border-top-right-radius: 0;
@@ -3614,7 +3623,7 @@ fieldset.ui-controlgroup {
 }
 .ui-listview > li.ui-first-child,
 .ui-listview > li.ui-first-child > a.ui-btn {
-	-webkit-border-top-right-radius: inherit;	
+	-webkit-border-top-right-radius: inherit;
 	border-top-right-radius: inherit;
 	-webkit-border-top-left-radius: inherit;
 	border-top-left-radius: inherit;
@@ -3633,7 +3642,7 @@ fieldset.ui-controlgroup {
 	border-bottom-right-radius: 0;
 }
 .ui-listview > li.ui-first-child > a.ui-btn + a.ui-btn {
-	-webkit-border-top-left-radius: 0;	
+	-webkit-border-top-left-radius: 0;
 	border-top-left-radius: 0;
 	-webkit-border-top-right-radius: inherit;
 	border-top-right-radius: inherit;
@@ -3646,15 +3655,15 @@ fieldset.ui-controlgroup {
 }
 .ui-listview > li.ui-first-child img:first-child:not(.ui-li-icon) {
 	-webkit-border-top-left-radius: inherit;
-	border-top-left-radius: inherit;	
+	border-top-left-radius: inherit;
 }
 .ui-listview > li.ui-last-child img:first-child:not(.ui-li-icon) {
 	-webkit-border-bottom-left-radius: inherit;
-	border-bottom-left-radius: inherit;	
+	border-bottom-left-radius: inherit;
 }
 .ui-collapsible-content > .ui-listview:not(.ui-listview-inset) {
 	-webkit-border-radius: inherit;
-	border-radius: inherit;	
+	border-radius: inherit;
 }
 .ui-listview > .ui-li-static {
 	padding: .7em 1em;
@@ -4413,35 +4422,35 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
  Styles for the table columntoggle mode
 */
 .ui-table-reflow td .ui-table-cell-label,
-.ui-table-reflow th .ui-table-cell-label { 
+.ui-table-reflow th .ui-table-cell-label {
 	display: none;
 }
-/* Mobile first styles: Begin with the stacked presentation at narrow widths */ 
+/* Mobile first styles: Begin with the stacked presentation at narrow widths */
 @media only all {
-	/* Hide the table headers */ 
-	.ui-table-reflow thead td, 
+	/* Hide the table headers */
+	.ui-table-reflow thead td,
 	.ui-table-reflow thead th {
 		display: none;
 	}
-	/* Show the table cells as a block level element */ 
+	/* Show the table cells as a block level element */
 	.ui-table-reflow td,
-	.ui-table-reflow th { 
+	.ui-table-reflow th {
 		text-align: left;
 		display: block;
 	}
-	/* Add a fair amount of top margin to visually separate each row when stacked */  
+	/* Add a fair amount of top margin to visually separate each row when stacked */
 	.ui-table-reflow tbody th {
 		margin-top: 3em;
 	}
-	/* Make the label elements a percentage width */ 
+	/* Make the label elements a percentage width */
 	.ui-table-reflow td .ui-table-cell-label,
-	.ui-table-reflow th .ui-table-cell-label { 
-		padding: .4em; 
-		min-width: 30%; 
+	.ui-table-reflow th .ui-table-cell-label {
+		padding: .4em;
+		min-width: 30%;
 		display: inline-block;
 		margin: -.4em 1em -.4em -.4em;
 	}
-	/* For grouped headers, have a different style to visually separate the levels by classing the first label in each col group */ 
+	/* For grouped headers, have a different style to visually separate the levels by classing the first label in each col group */
 	.ui-table-reflow th .ui-table-cell-label-top,
 	.ui-table-reflow td .ui-table-cell-label-top {
 		display: block;
@@ -4452,9 +4461,9 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 		font-weight: normal;
 	}
 }
-/* Breakpoint to show as a standard table at 560px (35em x 16px) or wider */ 
+/* Breakpoint to show as a standard table at 560px (35em x 16px) or wider */
 @media ( min-width: 35em ) {
-	/* Show the table header rows */ 
+	/* Show the table header rows */
 	.ui-table-reflow.ui-responsive td,
 	.ui-table-reflow.ui-responsive th,
 	.ui-table-reflow.ui-responsive tbody th,
@@ -4464,14 +4473,14 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 		display: table-cell;
 		margin: 0;
 	}
-	/* Hide the labels in each cell */ 
+	/* Hide the labels in each cell */
 	.ui-table-reflow.ui-responsive td .ui-table-cell-label,
-	.ui-table-reflow.ui-responsive th .ui-table-cell-label { 
+	.ui-table-reflow.ui-responsive th .ui-table-cell-label {
 		display: none;
 	}
 }
-/* Hack to make IE9 and WP7.5 treat cells like block level elements, scoped to ui-responsive class */ 
-/* Applied in a max-width media query up to the table layout breakpoint so we don't need to negate this*/ 
+/* Hack to make IE9 and WP7.5 treat cells like block level elements, scoped to ui-responsive class */
+/* Applied in a max-width media query up to the table layout breakpoint so we don't need to negate this*/
 @media ( max-width: 35em ) {
 	.ui-table-reflow.ui-responsive td,
 	.ui-table-reflow.ui-responsive th {
@@ -4703,7 +4712,7 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 		margin-left: 17em;
 	}
 	.ui-responsive-panel .ui-panel-page-content-open {
-		width: auto;	
+		width: auto;
 	}
 	.ui-responsive-panel .ui-panel-dismiss-display-push,
 	.ui-responsive-panel.ui-page-active ~ .ui-panel-dismiss-display-push {

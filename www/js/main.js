@@ -1,4 +1,16 @@
 $(document).ready(function(){
+
+// ********************  Anim HOME ********************
+  function blinkLogo()
+  {
+      $('#logo').fadeOut(900).delay(300).fadeIn(800);
+  }
+
+  setInterval(blinkLogo,2200);
+
+  $('#linksIndex').hide().delay(2200).fadeIn(1000);
+
+
   $('#testJquery').html('<p>Jquery fonctionne !</p>')
 
   var $mail = $('#mail'),
