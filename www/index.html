@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
-
+        <script type="text/javascript" src="cordova.js"></script>
 
 
         <title>GeoLocSport</title>
@@ -20,7 +20,7 @@
     <body>
 
 <!--
-********************  INDEX ********************
+********************  HOME ********************
 -->
 
       <div data-role="page" data-theme="b"  id="index">
@@ -32,7 +32,7 @@
             </div>
 
             <div id="linksIndex">
-              <a href="#inscription" data-transition="slide">S'inscrire</a>
+              <a href="#inscription">S'inscrire</a>
               <a href="#connexion">Se connecter</a>
             </div>
           </div>
@@ -46,24 +46,28 @@
       <div data-role="page" data-theme="b"  id="connexion">
 
           <div data-role="header" >
-              <h1>GEOLOC</h1>
+              <h1 class="headerH1">GEOLOC</h1>
           </div>
 
           <div data-role="content">
 
+            <div id="errorFormCo">
+              <p></p>
+            </div>
+
             <form action="#connexion" method="post" data-ajax="false">
               <div class="ui-field-contain">
-                <label for="text-basic">Email</label>
-                <input type="text" name="text-basic" id="mail" value="">
+                <label for="email">Email</label>
+                <input type="email"name="email" id="mailCo" value="">
               </div>
 
               <div class="ui-field-contain">
                 <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" value="" autocomplete="off">
+                <input type="password" name="password" id="passwordCo" value="" autocomplete="off">
               </div>
 
               <div class="ui-field-contain">
-                <input type="button" value="Envoyer" id="submit" />
+                <input type="button" value="Envoyer" id="submitCo" />
               </div>
 
             </form>
@@ -73,14 +77,10 @@
 
             </div>
 
-            <div class="link">
-              <a href="#inscription" data-transition="slide">Page d'accueil</a>
-            </div>
-
           </div>
 
           <div data-role="footer" data-position="fixed" >
-              <h2> Contenu du footer</h2>
+              <h2> Connexion </h2>
           </div>
 
       </div>
@@ -91,22 +91,71 @@
       <div data-role="page" data-theme="b"  id="inscription">
 
           <div data-role="header">
-                <h1>GeoLocSport</h1>
+                <h1 class="headerH1">GEOLOC</h1>
           </div>
 
           <div data-role="content">
-            <h1>Page 2 </h1>
-            <a href="#connexion" data-direction="reverse" data-transition="slide">connexion</a>
-            <div id="testJquery">
 
+            <div id="errorFormIns">
+              <p></p>
             </div>
+
+            <form action="#connexion" method="post" data-ajax="false">
+              <div class="ui-field-contain">
+                <label for="email">Email</label>
+                <input type="email"name="email" id="mailIns" value="">
+              </div>
+
+              <div class="ui-field-contain">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="passwordIns" value="" autocomplete="off">
+              </div>
+
+              <div class="ui-field-contain">
+                <label for="confirmation">Confirmation du mot de passe</label>
+                <input type="password" name="confimation" id="confirmation" value="" autocomplete="off">
+              </div>
+
+              <div class="ui-field-contain">
+                <input type="button" value="Envoyer" id="submitIns" />
+              </div>
+
+            </form>
+
           </div>
 
-          <div data-role="footer" >
-              <!-- footer -->
+          <div data-role="footer" data-position="fixed">
+            <h2>Inscription</h2>
           </div>
 
       </div>
+
+<!--
+******************** USER    ********************
+-->
+
+      <div data-role="page" data-theme="b"  id="user">
+
+          <div data-role="header">
+                <h1 class="headerH1">GEOLOC</h1>
+          </div>
+
+          <div data-role="content">
+            <p> Page Utilisateur </p>
+            <ul>
+              <li> Menu -> Gestion du groupe / Activité </li>
+              <li> Menu -> Groupe ->  Inviter/Supprimer des membres du groupe </li>
+              <li> Menu -> Activité ->  Démarrage activité </li>
+            </ul>
+          </div>
+
+          <div data-role="footer" data-position="fixed">
+            <h2>Page utilisateur</h2>
+          </div>
+
+
+      </div>
+
 
 
 

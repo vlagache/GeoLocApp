@@ -1,17 +1,19 @@
-
-/* Bouton envoyer formulaire */
-.ui-input-btn
-{
-  margin-top: 50px;
-}
-#login .link
-{
-  text-align: center;
-}
+/* General */
 h1
 {
   font-weight: inherit;
 }
+.ui-header
+{
+  	font-family: 'Abel', sans-serif;
+    font-size: 1.2em;
+    color: #ff962e !important;
+}
+.ui-field-contain
+{
+  border: 0 none;
+}
+/* First Screen */
 .logo
 {
   font-family: 'Abel', sans-serif;
@@ -34,4 +36,17 @@ h1
   width: 92%;
   position: absolute;
   bottom:15px;
+}
+
+/* Bouton envoyer formulaire */
+.ui-input-btn
+{
+  margin-top: 50px;
+}
+#errorFormIns,
+#errorFormCo
+{
+  text-align: center;
+  height: 25px;
+  border:1px solid #191a1a;
 }

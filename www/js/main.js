@@ -1,43 +1,67 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+$(document).ready(function() {
+    // Android app or Browser ?
+    window.isphone = false;
+    if(document.URL.indexOf("http://") === -1
+        && document.URL.indexOf("F:/") === -1) {
+        window.isphone = true;
+    }
+
+    if( window.isphone ) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    } else {
+        onDeviceReady();
+    }
+});
 
 function onDeviceReady() {
-      navigator.splashscreen.hide();
+
+  // ********************  Anim HOME JQUERY ********************
+    function blinkLogo()
+    {
+        $('#logo').fadeOut(900).delay(300).fadeIn(800);
+
+    }
+
+    setInterval(blinkLogo,4000);
+
+    $('#linksIndex').hide().delay(4000).fadeIn(1000);
+
+  // ********************  Inscription + Connexion FORM ********************
+    var $mailCo = $('#mailCo'),
+        $mailIns = $('#mailIns'),
+        $passwordCo = $('#passwordCo'), // Password Connexion Form
+        $passwordIns = $('#passwordIns'), // Password Inscription Form
+        $confirmation = $('#confirmation'),
+        $submitCo = $('#submitCo'), // Button submit Connexion
+        $submitIns = $('#submitIns'), // Button submit Inscription
+        $errorIns = $('#errorFormIns'),
+        $errorCo = $('#errorFormCo');
+
+
+// ************ Inscription Form  ****************** //
+    $submitIns.tap(function(e){
+      if($mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
+      {
+        $errorIns.text('Tous les champs ne sont pas remplis');
+      } else if ($confirmation.val() != $passwordIns.val()) {
+        $errorIns.text('Mots de passe differents !');
+      } else {
+        $.mobile.navigate("#user");
+        // Ajax vers le site
+        // var mail = $mailIns.val();
+        // var password = $passwordIns.val();
+      }
+    });
+// ************ Connexion Form  ****************** //
+    $submitCo.tap(function(e){
+      if($mailCo.val() == "" || $passwordCo.val() == "")
+      {
+        $errorCo.text('Tous les champs ne sont pas remplis');
+      } else {
+        $.mobile.navigate("#user");
+        // Ajax vers le site
+        // var mail = $mailCo.val();
+        // var password = $passwordCo.val();
+      }
+    });
 }
-
-
-$(document).ready(function(){
-
-
-// ********************  Anim HOME ********************
-  function blinkLogo()
-  {
-      $('#logo').fadeOut(900).delay(300).fadeIn(800);
-  }
-
-  setInterval(blinkLogo,2200);
-
-  $('#linksIndex').hide().delay(2200).fadeIn(1000);
-
-
-  $('#testJquery').html('<p>Jquery fonctionne !</p>')
-
-  var $mail = $('#mail'),
-      $password = $('#password'),
-      $submit = $('#submit');
-
-
-    // $(document).on('click', '#submit', function(){
-    //   var login = $('#login').val();
-    //   console.log(login);
-    //   $('#resultForm').html(login);
-    // });
-
-
-    $submit.click(function(e){
-      e.preventDefault();
-      var mail = $mail.val();
-      console.log(mail);
-      $('#resultForm').text(mail);
-  });
-
-});
