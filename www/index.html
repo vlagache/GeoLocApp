@@ -6,9 +6,9 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-
-
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+        <link rel="stylesheet" href="css/custom-theme.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.5.css"/>
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -23,7 +23,7 @@
 ********************  HOME ********************
 -->
 
-      <div data-role="page" data-theme="b"  id="index">
+      <div data-role="page" data-theme="a"  id="index">
 
 
           <div data-role="content">
@@ -43,7 +43,7 @@
 
 
       </div>
-      <div data-role="page" data-theme="b"  id="connexion">
+      <div data-role="page" data-theme="a"  id="connexion">
 
           <div data-role="header" >
               <h1 class="headerH1">GEOLOC</h1>
@@ -55,7 +55,7 @@
               <p></p>
             </div>
 
-            <form action="#connexion" method="post" data-ajax="false">
+            <form action="#" method="post" data-ajax="false">
               <div class="ui-field-contain">
                 <label for="email">Email</label>
                 <input type="email"name="email" id="mailCo" value="">
@@ -88,7 +88,7 @@
 <!--
 ********************  INSCRIPTION  ********************
 -->
-      <div data-role="page" data-theme="b"  id="inscription">
+      <div data-role="page" data-theme="a"  id="inscription">
 
           <div data-role="header">
                 <h1 class="headerH1">GEOLOC</h1>
@@ -100,7 +100,13 @@
               <p></p>
             </div>
 
-            <form action="#connexion" method="post" data-ajax="false">
+            <form action="#" method="post" data-ajax="false">
+
+              <div class="ui-field-contain">
+                <label for="name">Prénom</label>
+                <input type="text"name="name" id="name" value="">
+              </div>
+
               <div class="ui-field-contain">
                 <label for="email">Email</label>
                 <input type="email"name="email" id="mailIns" value="">
@@ -134,24 +140,57 @@
 ******************** USER    ********************
 -->
 
-      <div data-role="page" data-theme="b"  id="user">
+      <div data-role="page" data-theme="a"  id="user">
+
+          <div data-role="panel" data-display="overlay" id="myPanel">
+            <p id="userNamePanel">Bonjour , [Nom User]</h2>
+
+
+            <div class="linePanel"></div>
+
+            <div class="menuPanel">
+              <span class="ui-icon-gear ui-btn-icon-left" style="position:relative;">
+                 <a href="#inscription">Gestion du compte</a>
+              </span>
+            </div>
+
+
+
+            <div class="menuPanel">
+              <span class="ui-icon-user ui-btn-icon-left" style="position:relative;">
+                 <a href="#inscription">Gestion du groupe</a>
+              </span>
+            </div>
+
+            <div class="menuPanel">
+              <span class="ui-icon-location ui-btn-icon-left" style="position:relative;">
+                 Démarrer une activité
+               </span>
+            </div>
+
+          </div><!-- /panel -->
 
           <div data-role="header">
+            <a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all burger">No Text</a>
                 <h1 class="headerH1">GEOLOC</h1>
-          </div>
+          </div><!-- /header -->
+
+
+
 
           <div data-role="content">
-            <p> Page Utilisateur </p>
-            <ul>
-              <li> Menu -> Gestion du groupe / Activité </li>
-              <li> Menu -> Groupe ->  Inviter/Supprimer des membres du groupe </li>
-              <li> Menu -> Activité ->  Démarrage activité </li>
-            </ul>
+
+          <div id="contentUserView">
+            <img src="img/location.png" id="locationImg" />
+            <p>Démarrer une activité</p>
+            <div class="lineUserView"></div>
+            <img src="img/adduser.png" id="adduserImg"/>
+            <p>Gestion du groupe</p>
           </div>
 
-          <div data-role="footer" data-position="fixed">
-            <h2>Page utilisateur</h2>
           </div>
+
+
 
 
       </div>

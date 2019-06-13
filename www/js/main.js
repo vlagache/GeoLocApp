@@ -27,7 +27,8 @@ function onDeviceReady() {
     $('#linksIndex').hide().delay(4000).fadeIn(1000);
 
   // ********************  Inscription + Connexion FORM ********************
-    var $mailCo = $('#mailCo'),
+    var $name = $('#name'),
+        $mailCo = $('#mailCo'),
         $mailIns = $('#mailIns'),
         $passwordCo = $('#passwordCo'), // Password Connexion Form
         $passwordIns = $('#passwordIns'), // Password Inscription Form
@@ -40,7 +41,7 @@ function onDeviceReady() {
 
 // ************ Inscription Form  ****************** //
     $submitIns.tap(function(e){
-      if($mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
+      if($name.val() == "" || $mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
       {
         $errorIns.text('Tous les champs ne sont pas remplis');
       } else if ($confirmation.val() != $passwordIns.val()) {
@@ -64,4 +65,5 @@ function onDeviceReady() {
         // var password = $passwordCo.val();
       }
     });
+// ******************** USER ********************
 }
