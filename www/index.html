@@ -142,52 +142,27 @@
 
       <div data-role="page" data-theme="a"  id="user">
 
-          <div data-role="panel" data-display="overlay" id="myPanel">
-            <p id="userNamePanel">Bonjour , [Nom User]</h2>
-
-
-            <div class="linePanel"></div>
-
-            <div class="menuPanel">
-              <span class="ui-icon-gear ui-btn-icon-left" style="position:relative;">
-                 <a href="#inscription">Gestion du compte</a>
-              </span>
-            </div>
-
-
-
-            <div class="menuPanel">
-              <span class="ui-icon-user ui-btn-icon-left" style="position:relative;">
-                 <a href="#inscription">Gestion du groupe</a>
-              </span>
-            </div>
-
-            <div class="menuPanel">
-              <span class="ui-icon-location ui-btn-icon-left" style="position:relative;">
-                 Démarrer une activité
-               </span>
-            </div>
-
-          </div><!-- /panel -->
-
           <div data-role="header">
-            <a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all burger">No Text</a>
-                <h1 class="headerH1">GEOLOC</h1>
-          </div><!-- /header -->
-
+            <h1 class="headerH1">GEOLOC</h1>
+          </div>
 
 
 
           <div data-role="content">
-
-          <div id="contentUserView">
-            <img src="img/location.png" id="locationImg" />
-            <p>Démarrer une activité</p>
-            <div class="lineUserView"></div>
-            <img src="img/adduser.png" id="adduserImg"/>
-            <p>Gestion du groupe</p>
+            <div id="contentUserView">
+              <img src="img/location_big.png" id="locationImg" class="imgBig"/>
+              <p>Démarrer une activité</p>
+              <div class="lineUserView"></div>
+              <img src="img/adduser_big.png" id="groupImg" class="imgBig">
+              <p>Gestion du groupe</p>
+              <div class="lineUserView"></div>
+              <img src="img/setting_big.png"/ id="compteImg" class="imgBig">
+              <p>Gestion du compte</p>
+            </div>
           </div>
 
+          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h2>nom User</h2>
           </div>
 
 
@@ -195,6 +170,89 @@
 
       </div>
 
+<!--
+******************** ACTIVITY   ********************
+-->
+      <div data-role="page" data-theme="a"  id="activity">
+
+        <div data-role="header" class="headerUser" data-position="fixed" data-tap-toggle="false">
+          <img src="img/arrow_min.png" class="arrowImg"/>
+          <h1 class="headerH1">GEOLOC</h1>
+        </div>
+
+
+
+          <div data-role="content">
+              <ul>
+                <li>Démarrer une activité</li>
+                <li>Arreter une activité </li>
+                <li>Infos sur l'activité</li>
+                <li>Button retour</li>
+              </ul>
+          </div>
+
+          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h2>Activité</h2>
+          </div>
+
+
+
+
+      </div>
+<!--
+******************** GROUP   ********************
+-->
+      <div data-role="page" data-theme="a"  id="group">
+
+        <div data-role="header" class="headerUser" data-position="fixed" data-tap-toggle="false">
+          <img src="img/arrow_min.png" class="arrowImg"/>
+          <h1 class="headerH1">GEOLOC</h1>
+        </div><!-- /header -->
+
+
+
+          <div data-role="content">
+            <ul>
+              <li>Ajouter un membre</li>
+              <li>Supprimer une membre</li>
+              <li>Tableau des membres</li>
+            </ul>
+          </div>
+
+          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h2>Gestion du groupe</h2>
+          </div>
+
+
+
+
+      </div>
+<!--
+******************** COMPTE  ********************
+-->
+      <div data-role="page" data-theme="a"  id="compte">
+
+        <div data-role="header" class="headerUser" data-position="fixed" data-tap-toggle="false">
+          <img src="img/arrow_min.png" class="arrowImg"/>
+          <h1 class="headerH1">GEOLOC</h1>
+        </div><!-- /header -->
+
+          <div data-role="content">
+            <ul>
+              <li>Changer Mot de passe / Mail</li>
+              <li>Info Compte</li>
+              <li>Suppresion du compte</li>
+            </ul>
+          </div>
+
+          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h2>Gestion du compte</h2>
+          </div>
+
+
+
+
+      </div>
 
 
 

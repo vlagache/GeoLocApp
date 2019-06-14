@@ -60,10 +60,26 @@ function onDeviceReady() {
         $errorCo.text('Tous les champs ne sont pas remplis');
       } else {
         $.mobile.navigate("#user");
+
+
         // Ajax vers le site
         // var mail = $mailCo.val();
         // var password = $passwordCo.val();
       }
     });
 // ******************** USER ********************
+    $('#locationImg').tap(function(e){
+      $.mobile.navigate("#activity");
+    });
+    $('#groupImg').tap(function(e){
+      $.mobile.navigate("#group");
+    });
+    $('#compteImg').tap(function(e){
+      // $.mobile.changePage("compte.html");
+      $.mobile.navigate("#compte");
+
+    });
+    $('.arrowImg').tap(function(e){
+      $.mobile.navigate("#user");
+    });
 }
