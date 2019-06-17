@@ -27,7 +27,7 @@ function onDeviceReady() {
     $('#linksIndex').hide().delay(4000).fadeIn(1000);
 
   // ********************  Inscription + Connexion FORM ********************
-    var $name = $('#name'),
+    var $nameIns = $('#nameIns'),
         $mailCo = $('#mailCo'),
         $mailIns = $('#mailIns'),
         $passwordCo = $('#passwordCo'), // Password Connexion Form
@@ -47,6 +47,19 @@ function onDeviceReady() {
       } else if ($confirmation.val() != $passwordIns.val()) {
         $errorIns.text('Mots de passe differents !');
       } else {
+        // $.post(
+        //   'http://localhost/tests/geoloc/InscriptionController.php',
+        //   {
+        //     name : $nameIns.val(),
+        //     mail : $mailIns.val(),
+        //     password : $passwordIns.val()
+        //   },
+        //   function(data){
+        //       // traitement du retour
+        //   },
+        //   'text'
+        //
+        // );
         $.mobile.navigate("#user");
         // Ajax vers le site
         // var mail = $mailIns.val();
@@ -60,25 +73,35 @@ $submitCo.tap(function(e){
     $errorCo.text('Tous les champs ne sont pas remplis');
   } else {
     $.post(
-        // 'http://localhost/tests/geoloc/ajax.php',
-        'http://www.vincentlagache.com/ajaxp5/ajax.php',
+
+        // 'http://localhost/tests/GeoLocServer/ConnexionController.php',
+        'http://www.vincentlagache.com/geolocserver/ConnexionController.php',
         {
           mail : $mailCo.val(),
           password : $passwordCo.val()
         },
         function(data){
-          if(data == 'Success')
+          if(data['result'] == 'Success')
           {
             $.mobile.navigate("#user");
+            $mailCo.val("");
+            $passwordCo.val("");
+            $errorCo.text("");
+            $('#userName').append(data['name']);
+          } else if (data['result'] == 'WrongPassword') {
+            $errorCo.text('Mauvais mot de passe');
+            setTimeout(function(){
+              $errorCo.text('');
+            },4000);
           } else {
-            $errorCo.text('Erreur mdp/login');
+            $errorCo.text('Mauvaise adresse email');
+            setTimeout(function(){
+              $errorCo.text('');
+            },4000);
           }
         },
-        'text'
+        'json'
     );
-    // Ajax vers le site
-    // var mail = $mailCo.val();
-    // var password = $passwordCo.val();
   }
 });
 // ******************** USER ********************
@@ -96,4 +119,5 @@ $submitCo.tap(function(e){
     $('.arrowImg').tap(function(e){
       $.mobile.navigate("#user");
     });
+
 }

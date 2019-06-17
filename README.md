@@ -1,6 +1,7 @@
 # GeoLocApp
 Application Cordova P5
 
+*******************
 Aprés un git clone pour faire fonctionner l'ap sur Android  
 
 ```
@@ -8,8 +9,9 @@ cordova platform add android
 cordova build android
 ```
 
+*******************
 
-__cordova__ build android rajoute par default des splash screens dans
+__cordov build android__ rajoute par default des splash screens dans
 
 _platforms\android\app\src\main\res_
 
