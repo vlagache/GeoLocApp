@@ -13,6 +13,11 @@ $(document).ready(function() {
     }
 });
 
+function activePage()
+{
+  var activePage = $(":mobile-pagecontainer").pagecontainer("getActivePage")[0].id ;
+  return activePage;
+}
 function onDeviceReady() {
 
   // ********************  Anim HOME JQUERY ********************
@@ -41,29 +46,43 @@ function onDeviceReady() {
 
 // ************ Inscription Form  ****************** //
     $submitIns.tap(function(e){
-      if($name.val() == "" || $mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
+      if($nameIns.val() == "" || $mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
       {
         $errorIns.text('Tous les champs ne sont pas remplis');
       } else if ($confirmation.val() != $passwordIns.val()) {
         $errorIns.text('Mots de passe differents !');
       } else {
-        // $.post(
-        //   'http://localhost/tests/geoloc/InscriptionController.php',
-        //   {
-        //     name : $nameIns.val(),
-        //     mail : $mailIns.val(),
-        //     password : $passwordIns.val()
-        //   },
-        //   function(data){
-        //       // traitement du retour
-        //   },
-        //   'text'
-        //
-        // );
-        $.mobile.navigate("#user");
-        // Ajax vers le site
-        // var mail = $mailIns.val();
-        // var password = $passwordIns.val();
+        $.post(
+          // 'http://localhost/tests/GeoLocServer/InscriptionController.php',
+          'http://www.vincentlagache.com/geolocserver/InscriptionController.php',
+          {
+            name : $nameIns.val(),
+            mail : $mailIns.val(),
+            password : $passwordIns.val()
+          },
+          function(data){
+              if ( data['result'] == 'Success')
+              {
+                  $.mobile.navigate("#user");
+                  $mailCo.val("");
+                  $passwordCo.val("");
+                  $errorCo.text("");
+                  $('#userName').text("Bonjour " + $nameIns.val());
+              } else if ( data['result'] == 'WrongMail'){
+                $errorIns.text('Un compte est déja lié à cet email');
+                setTimeout(function(){
+                  $errorCo.text('');
+                },4000);
+              } else {
+                $errorIns.text('Echec lors de la création du compte');
+                setTimeout(function(){
+                  $errorCo.text('');
+                },4000);
+              }
+          },
+          'json'
+
+        );
       }
     });
 // ************ Connexion Form  ****************** //
@@ -87,7 +106,7 @@ $submitCo.tap(function(e){
             $mailCo.val("");
             $passwordCo.val("");
             $errorCo.text("");
-            $('#userName').append(data['name']);
+            $('#userName').text("Bonjour " + data['name']);
           } else if (data['result'] == 'WrongPassword') {
             $errorCo.text('Mauvais mot de passe');
             setTimeout(function(){
