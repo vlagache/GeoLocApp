@@ -43,7 +43,8 @@ h2
   margin-top: 50px;
 }
 #errorFormIns,
-#errorFormCo
+#errorFormCo,
+#infoActivity
 {
   text-align: center;
   height: 25px;
@@ -103,3 +104,14 @@ h2
   position:fixed;
   bottom:0;
 } */
+/* PAGE ACTIVITY */
+#actionActivity
+{
+  border:1px solid red;
+  position:absolute;
+  bottom:80px;
+  width: 92%;
+  display:flex;
+  justify-content: space-around;
+  text-align: center;
+}

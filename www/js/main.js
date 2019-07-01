@@ -43,6 +43,7 @@ function onDeviceReady() {
         $errorIns = $('#errorFormIns'),
         $errorCo = $('#errorFormCo');
 
+    var $userId;
 
 // ************ Inscription Form  ****************** //
     $submitIns.tap(function(e){
@@ -53,8 +54,8 @@ function onDeviceReady() {
         $errorIns.text('Mots de passe differents !');
       } else {
         $.post(
-          // 'http://localhost/tests/GeoLocServer/InscriptionController.php',
-          'http://www.vincentlagache.com/geolocserver/InscriptionController.php',
+            'http://localhost:8000/inscription',
+            // 'http://www.geolocserver.vincentlagache.com/inscription',
           {
             name : $nameIns.val(),
             mail : $mailIns.val(),
@@ -64,9 +65,10 @@ function onDeviceReady() {
               if ( data['result'] == 'Success')
               {
                   $.mobile.navigate("#user");
-                  $mailCo.val("");
-                  $passwordCo.val("");
-                  $errorCo.text("");
+                  $mailIns.val("");
+                  $passwordIns.val("");
+                  $errorIns.text("");
+                  var $userId = data['userId'];
                   $('#userName').text("Bonjour " + $nameIns.val());
               } else if ( data['result'] == 'WrongMail'){
                 $errorIns.text('Un compte est déja lié à cet email');
@@ -76,7 +78,7 @@ function onDeviceReady() {
               } else {
                 $errorIns.text('Echec lors de la création du compte');
                 setTimeout(function(){
-                  $errorCo.text('');
+                  $errorIns.text('');
                 },4000);
               }
           },
@@ -92,9 +94,8 @@ $submitCo.tap(function(e){
     $errorCo.text('Tous les champs ne sont pas remplis');
   } else {
     $.post(
-
-        // 'http://localhost/tests/GeoLocServer/ConnexionController.php',
-        'http://www.vincentlagache.com/geolocserver/ConnexionController.php',
+        'http://localhost:8000/connexion',
+        // 'http://www.geolocserver.vincentlagache.com/connexion',
         {
           mail : $mailCo.val(),
           password : $passwordCo.val()
@@ -106,6 +107,7 @@ $submitCo.tap(function(e){
             $mailCo.val("");
             $passwordCo.val("");
             $errorCo.text("");
+            $userId = data['userId'];
             $('#userName').text("Bonjour " + data['name']);
           } else if (data['result'] == 'WrongPassword') {
             $errorCo.text('Mauvais mot de passe');
@@ -126,9 +128,11 @@ $submitCo.tap(function(e){
 // ******************** USER ********************
     $('#locationImg').tap(function(e){
       $.mobile.navigate("#activity");
+
     });
     $('#groupImg').tap(function(e){
       $.mobile.navigate("#group");
+
     });
     $('#compteImg').tap(function(e){
       // $.mobile.changePage("compte.html");
@@ -138,5 +142,29 @@ $submitCo.tap(function(e){
     $('.arrowImg').tap(function(e){
       $.mobile.navigate("#user");
     });
+// ******************** ACTIVITY ********************
+  var $infosActivity = $('#infoActivity');
+
+  $('#startImg').tap(function(e){
+    console.log("http://localhost:8000/activity/start/"+$userId);
+    $.post(
+        'http://localhost:8000/activity/start/'+$userId,
+        // 'http://www.geolocserver.vincentlagache.com/connexion',
+        function(data){
+          if(data['result'] == 'startActivity')
+          {
+            $infosActivity.text('Activité démarré ( clignotte ? )');
+          } else {
+            $infosActivity.text('Une activité existe deja pour cet utilisateur');
+          }
+        },
+        'json'
+    );
+  });
+
+  $('#pauseImg').tap(function(e){
+    console.log("http://localhost:8000/activity/stop/"+$userId);
+    $infosActivity.text('Activité stoppé')
+  });
 
 }
