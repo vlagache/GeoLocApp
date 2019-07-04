@@ -54,8 +54,8 @@ function onDeviceReady() {
         $errorIns.text('Mots de passe differents !');
       } else {
         $.post(
-            'http://localhost:8000/inscription',
-            // 'http://www.geolocserver.vincentlagache.com/inscription',
+            // 'http://localhost:8000/inscription',
+            'http://www.geolocserver.vincentlagache.com/inscription',
           {
             name : $nameIns.val(),
             mail : $mailIns.val(),
@@ -68,7 +68,7 @@ function onDeviceReady() {
                   $mailIns.val("");
                   $passwordIns.val("");
                   $errorIns.text("");
-                  var $userId = data['userId'];
+                  $userId = data['userId'];
                   $('#userName').text("Bonjour " + $nameIns.val());
               } else if ( data['result'] == 'WrongMail'){
                 $errorIns.text('Un compte est déja lié à cet email');
@@ -94,8 +94,8 @@ $submitCo.tap(function(e){
     $errorCo.text('Tous les champs ne sont pas remplis');
   } else {
     $.post(
-        'http://localhost:8000/connexion',
-        // 'http://www.geolocserver.vincentlagache.com/connexion',
+        // 'http://localhost:8000/connexion',
+        'http://www.geolocserver.vincentlagache.com/connexion',
         {
           mail : $mailCo.val(),
           password : $passwordCo.val()
@@ -135,27 +135,35 @@ $submitCo.tap(function(e){
 
     });
     $('#compteImg').tap(function(e){
-      // $.mobile.changePage("compte.html");
       $.mobile.navigate("#compte");
 
     });
     $('.arrowImg').tap(function(e){
+      if(activePage() == "activity" && $clearInfosActivity == true)
+      {
+          $infosActivity.text("");
+      }
       $.mobile.navigate("#user");
     });
 // ******************** ACTIVITY ********************
   var $infosActivity = $('#infoActivity');
+  var $clearInfosActivity;
+  $loc = new GeoLoc();
 
   $('#startImg').tap(function(e){
-    console.log("http://localhost:8000/activity/start/"+$userId);
     $.post(
         'http://localhost:8000/activity/start/'+$userId,
-        // 'http://www.geolocserver.vincentlagache.com/connexion',
+        // 'http://localhost:8000/activity/start/1',
+        // 'http://www.geolocserver.vincentlagache.com/activity/start/' +$userId,
         function(data){
           if(data['result'] == 'startActivity')
           {
-            $infosActivity.text('Activité démarré ( clignotte ? )');
-          } else {
-            $infosActivity.text('Une activité existe deja pour cet utilisateur');
+            $infosActivity.text('Activité en cours');
+            // startLocation($userId);
+            $loc.start($userId);
+          } else if (data['result'] == 'activityExist') {
+            $infosActivity.text('Vous avez déja démarré une activité');
+            $clearInfosActivity = true;
           }
         },
         'json'
@@ -163,8 +171,22 @@ $submitCo.tap(function(e){
   });
 
   $('#pauseImg').tap(function(e){
-    console.log("http://localhost:8000/activity/stop/"+$userId);
-    $infosActivity.text('Activité stoppé')
+    $.post(
+        'http://localhost:8000/activity/delete/'+$userId,
+        // 'http://localhost:8000/activity/delete/1',
+        // 'http://www.geolocserver.vincentlagache.com/activity/delete/'+$userId,
+        function(data){
+          if(data['result'] == 'deleteActivity')
+          {
+            $infosActivity.text('Arret de l\'activité ');
+            $clearInfosActivity = true;
+          } else if (data['result'] == 'activityDoesntExist') {
+            $infosActivity.text('Vous n\'avez lancé aucune activité');
+            $clearInfosActivity = true;
+          }
+        },
+        'json'
+    );
   });
 
 }
