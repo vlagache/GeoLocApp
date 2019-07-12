@@ -67,8 +67,8 @@ class GeoLoc {
       (position) => {
         this.interval = setInterval( () => {
           $.post(
-            'http://localhost:8000/position/' +userId,
-            // 'http://www.geolocserver.vincentlagache.com/position/' +userId,
+            // 'http://localhost:8000/position/' +userId,
+            'http://www.geolocserver.vincentlagache.com/position/' +userId,
             {
               latitude : position.coords.latitude,
               longitude  : position.coords.longitude

@@ -12,6 +12,9 @@ h2
 {
   letter-spacing: 2px;
 }
+.ui-table-columntoggle-btn {
+    display: none;
+}
 /* First Screen */
 .logo
 {
@@ -38,10 +41,6 @@ h2
 }
 
 /* Bouton envoyer formulaire */
-.ui-input-btn
-{
-  margin-top: 50px;
-}
 #errorFormIns,
 #errorFormCo,
 #infoActivity
@@ -104,6 +103,7 @@ h2
   position:fixed;
   bottom:0;
 } */
+
 /* PAGE ACTIVITY */
 #actionActivity
 {
@@ -121,11 +121,59 @@ h2
   position: absolute;
   top: 45%;
   left: 50%;
-  width: 95%;
   font-family: 'Abel', sans-serif;
   color:#b0b0b0;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-align: center;
   font-weight: 600;
+}
+/* PAGE GROUP */
+
+#allListTeam
+{
+  text-align: center;
+  margin-bottom: 25px;
+}
+#addFriendForm,
+#createGroupForm
+{
+  border-top: 1px dashed #f7991c;
+  border-bottom : 1px dashed #f7991c;
+}
+#addFriendForm p,
+#createGroupForm p
+{
+  text-align : center;
+  font-family: 'Abel', sans-serif;
+  color:#b0b0b0;
+  margin-top: 5%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.nameTeam
+{
+  text-align : center;
+  font-family: 'Abel', sans-serif;
+  color:#b0b0b0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top : 15px;
+  border-bottom: 1px dashed #f7991c;
+}
+table{width: 100%;}
+tr{text-align: center;}
+td .user{width: 75%;}
+td .cross{width: 25%;}
+#errorAddUser,
+#errorNewTeam
+{
+  text-align: center;
+  height: 25px;
+  margin-bottom: 20px;
+}
+.imgDelete
+{
+  height: 30px;
+  width: 30px;
 }

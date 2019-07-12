@@ -186,6 +186,7 @@
             <div id="infoActivity">
             </div>
             <div id="actionActivity">
+              <img src="img/stop_min.png" id="stopImg" class="imgActivity"/>
               <img src="img/pause_min.png" id="pauseImg" class="imgActivity"/>
               <img src="img/play_min.png" id="startImg" class="imgActivity"/>
             </div>
@@ -212,14 +213,61 @@
 
 
           <div data-role="content">
-            <ul>
-              <li>Ajouter un membre</li>
-              <li>Supprimer une membre</li>
-              <li>Tableau des membres</li>
-            </ul>
+
+              <div id="allListTeam">
+              </div>
+
+              <form action="#" method="post" data-ajax="false" id="createGroupForm">
+                <p>
+                  Créer une nouvelle équipe
+                </p>
+
+                <div id="errorNewTeam">
+                  <p></p>
+                </div>
+
+
+
+                <div class="ui-field-contain">
+                  <label for="name">Nom de la nouvelle équipe</label>
+                  <input type="text"name="nameNewTeam" id="nameNewTeam" value="">
+                </div>
+
+
+                <div class="ui-field-contain">
+                  <input type="button" value="Créer une équipe" id="createTeam" />
+                </div>
+
+              </form>
+
+              <form action="#" method="post" data-ajax="false" id="addFriendForm">
+                <p>
+                  Ajouter un ami dans un groupe
+                </p>
+
+                <div id="errorAddUser">
+                  <p></p>
+                </div>
+
+                <div class="ui-field-contain">
+                  <label for="email">Email de votre ami</label>
+                  <input type="email"name="email" id="mailFriend" value="">
+                </div>
+
+                <select class="team-select">
+                  <option value="" selected> Choisir une équipe </option>
+                </select>
+
+
+                <div class="ui-field-contain">
+                  <input type="button" value="Ajouter" class="addFriend" />
+                </div>
+
+              </form>
+
           </div>
 
-          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+          <div data-role="footer" data-tap-toggle="false">
             <h2>Gestion du groupe</h2>
           </div>
 
@@ -250,12 +298,10 @@
           </div>
 
 
-
-
       </div>
 
-
-
+      <script src="js/config.js"></script>
+      <script src="js/teams.js"></script>
       <script src="js/position.js"></script>
       <script src="js/main.js"></script>
     </body>
