@@ -42,8 +42,7 @@ h2
 
 /* Bouton envoyer formulaire */
 #errorFormIns,
-#errorFormCo,
-#infoActivity
+#errorFormCo
 {
   text-align: center;
   height: 25px;
@@ -127,6 +126,19 @@ h2
   text-transform: uppercase;
   text-align: center;
   font-weight: 600;
+  width: 85%;
+  height: 100px;
+}
+#infosAboutApp
+{
+  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  text-align: justify;
+  color:#b0b0b0;
+  font-size: 0.9em;
 }
 /* PAGE GROUP */
 
@@ -163,8 +175,8 @@ h2
 }
 table{width: 100%;}
 tr{text-align: center;}
-td .user{width: 75%;}
-td .cross{width: 25%;}
+.user{width: 75%;}
+.cross{width: 25%;}
 #errorAddUser,
 #errorNewTeam
 {

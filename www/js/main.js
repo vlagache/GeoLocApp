@@ -51,9 +51,8 @@ function onDeviceReady() {
               if ( data['result'] == 'Success')
               {
                   $.mobile.navigate("#user");
-                  $mailIns.val("");
-                  $passwordIns.val("");
                   $errorIns.text("");
+                  $inscriptionForm[0].reset();
                   $userId = data['userId'];
                   $('#userName').text("Bonjour " + $nameIns.val());
               } else if ( data['result'] == 'WrongMail'){
@@ -90,9 +89,8 @@ $submitCo.tap(function(e){
           if(data['result'] == 'Success')
           {
             $.mobile.navigate("#user");
-            $mailCo.val("");
-            $passwordCo.val("");
             $errorCo.text("");
+            $connexionForm[0].reset();
             $userId = data['userId'];
             $('#userName').text("Bonjour " + data['name']);
           } else if (data['result'] == 'WrongPassword') {
@@ -114,30 +112,29 @@ $submitCo.tap(function(e){
 // ******************** USER ********************
     $('#locationImg').tap(function(e){
       $.mobile.navigate("#activity");
-
     });
     $('#groupImg').tap(function(e){
       $.mobile.navigate("#group");
-      updateAllListTeam($userId);
+      updateAllListTeams($userId);
     });
     $('#compteImg').tap(function(e){
       $.mobile.navigate("#compte");
 
     });
     $('.arrowImg').tap(function(e){
-      if($clearInfos == true)
-      {
         setTimeout( () => {
           $infosActivity.text("");
           $errorAddUser.text("");
+          $infosAboutApp.text("");
         },500)
-      }
       $.mobile.navigate("#user");
     });
 // ******************** ACTIVITY ********************
  $loc = new GeoLoc();
 
   $('#startImg').tap(function(e){
+    $infosAboutApp.text("");
+    $infosActivity.text("");
     $.post(
         // 'http://localhost:8000/activity/start/'+$userId,
         // 'http://localhost:8000/activity/start/1',
@@ -147,21 +144,49 @@ $submitCo.tap(function(e){
           {
             $infosActivity.text('Activité en cours');
             $loc.start($userId);
-          } else if (data['result'] == 'activityExist') {
+          } else if (data['result'] == 'activityExist')
+          {
             $infosActivity.text('Activité en cours');
             $loc.start($userId);
+          } else if ( data['result'] == 'userHaveNoTeam')
+          {
+            let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"
+            $infosActivity.append(html);
+
+            $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
+
+            $noFriendsOrTeamLink.tap(function(e){
+              updateAllListTeams($userId);
+            });
+
+          } else if ( data['result'] == 'noFriendInYourTeam')
+          {
+            let html = "Vous n'avez ajouté aucun amis dans vos équipes . Le but de cette application est d'alerter vos proches . Vous pouvez ajouter des amis ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"
+            $infosActivity.append(html);
+
+            $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
+
+            $noFriendsOrTeamLink.tap(function(e){
+              updateAllListTeams($userId);
+            });
           }
         },
         'json'
     );
   });
 
+
+
+
   $('#pauseImg').tap(function(e){
-    $loc.pause();
-    $infosActivity.text('Activité en pause');
+    $infosActivity.text("");
+    $infosAboutApp.text("");
+    $loc.pause($userId);
   });
 
   $('#stopImg').tap(function(e){
+    $infosAboutApp.text("");
+    $infosActivity.text("");
     $.post(
         // 'http://localhost:8000/activity/delete/'+$userId,
         // 'http://localhost:8000/activity/delete/1',
@@ -169,11 +194,10 @@ $submitCo.tap(function(e){
         function(data){
           if(data['result'] == 'deleteActivity')
           {
-            $infosActivity.text('Arret de l\'activité ');
-            $clearInfos = true;
+            $infosActivity.text('Arret de l\'activité');
+            $infosAboutApp.text('Toutes les informations enregistrées pendant votre activité sur votre localisation géographique sont définitivement supprimés de nos serveurs lorsque vous arretez une activité');
           } else if (data['result'] == 'activityDoesntExist') {
             $infosActivity.text('Vous n\'avez lancé aucune activité');
-            $clearInfos = true;
           }
         },
         'json'
@@ -183,7 +207,7 @@ $submitCo.tap(function(e){
   // ******************** GROUP ********************
 
       $addFriend.tap(function(e){
-        addFriend();
+        addFriend($userId);
       });
 
       $createTeam.tap(function(e){

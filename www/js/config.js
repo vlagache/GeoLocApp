@@ -1,7 +1,9 @@
 
 // ********************  Inscription + Connexion FORM ********************
 
-var $nameIns = $('#nameIns'),
+var $connexionForm = $('#connexionForm');
+    $inscriptionForm = $('#inscriptionForm');
+    $nameIns = $('#nameIns'),
     $mailCo = $('#mailCo'),
     $mailIns = $('#mailIns'),
     $passwordCo = $('#passwordCo'), // Password Connexion Form
@@ -16,13 +18,16 @@ var $userId;
 
 // ********************  Activity ********************
 var $infosActivity = $('#infoActivity');
-var $clearInfos;
+    $infosAboutApp = $('#infosAboutApp');
+    $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
+
+
 
 
 // ********************  GROUP ********************
-var $allListTeam = $('#allListTeam');
+var $addFriendForm = $('#addFriendForm');
+    $allListTeam = $('#allListTeam');
     $selectListTeam = $('.team-select');
-    $optionsListTeam = $('.team-select option');
     $addFriend = $('.addFriend');
     $mailFriend = $('#mailFriend')
     $deleteFriend = $('.imgDelete');

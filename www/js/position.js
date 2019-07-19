@@ -82,16 +82,29 @@ class GeoLoc {
             },
             'json'
           );
-        },5000)
+        },1000)
     },
       (err) => {
       this.error(err)
     },
     this.options)
   }
-  pause()
+  pause(userId)
   {
     let myobj = this;
-    clearInterval(myobj.interval);
+    $.post(
+      // 'http://localhost:8000//activity/pause/' +userId,
+      'http://www.geolocserver.vincentlagache.com/activity/pause/' +userId,
+      function(data)
+      {
+        if(data['result'] == 'activityDoesntExist')
+        $infosActivity.text('Vous n\'avez lancé aucune activité');
+        else {
+          clearInterval(myobj.interval);
+          $infosActivity.text('Activité en pause');
+        }
+      },
+      'json'
+    );
   }
 }

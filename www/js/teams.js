@@ -5,13 +5,19 @@ function clearError(errorDiv)
   },4000);
 }
 
-function updateAllListTeam(myId)
+function updateAllListTeams(myId)
 {
-  $allListTeam.load("http://localhost:8000/team/"+ $userId + " #listTeams " , e => {
+  // "http://localhost:8000/team/"+ $userId + " #listTeams "
+  $allListTeam.load("http://www.geolocserver.vincentlagache.com/team/"+ $userId + " #listTeams " , e => {
     $deleteFriend = $('.imgDelete');
     resetEvent(myId); // Active les listeners des icones de suppression.
   });
-  $selectListTeam.load("http://localhost:8000/team/"+ $userId + " option" )
+  updateAllNameTeams();
+}
+function updateAllNameTeams()
+{
+  // "http://localhost:8000/team/"+ $userId + " option"
+  $selectListTeam.load("http://www.geolocserver.vincentlagache.com/team/" + $userId + "option" )
 }
 
 function createNewTeam(userId)
@@ -23,8 +29,8 @@ function createNewTeam(userId)
   } else
   {
     $.post(
-        'http://localhost:8000/team/create/' +userId,
-        // 'http://www.geolocserver.vincentlagache.com/team/create/' +userId,
+        // 'http://localhost:8000/team/create/' +userId,
+        'http://www.geolocserver.vincentlagache.com/team/create/' +userId,
         {
           nameTeam : $nameNewTeam.val(),
         },
@@ -35,7 +41,7 @@ function createNewTeam(userId)
             clearError($errorNewTeam);
           } else if ( data['result'] == 'newTeamCreate')
           {
-            updateAllListTeam(userId);
+            updateAllListTeams(userId);
             $nameNewTeam.val("");
           }
         },
@@ -51,8 +57,8 @@ function resetEvent(myId)
     let idTeam = $(this).attr('id').split('-')[1];
     let idUser = $(this).attr('id').split('-')[2];
     $.post(
-        'http://localhost:8000/team/'+ idTeam + '/deleteuser',
-        // 'http://www.geolocserver.vincentlagache.com/team/'+ idTeam + '/deleteuser',
+        // 'http://localhost:8000/team/'+ idTeam + '/deleteuser',
+        'http://www.geolocserver.vincentlagache.com/team/'+ idTeam + '/deleteuser',
         {
           idUser : idUser,
         },
@@ -60,9 +66,10 @@ function resetEvent(myId)
           if ( data['result'] == 'removeUser')
           {
             $('#deleteLine-'+ idTeam +'-' +idUser).remove();
+            $addFriendForm[0].reset();
             if( idUser == myId)
             {
-              updateAllListTeam(myId);
+              updateAllListTeams(myId);
             }
           }
         },
@@ -75,7 +82,7 @@ function stopEvent()
   $deleteFriend.off('tap');
 }
 
-function addFriend()
+function addFriend(myId)
 {
     if($mailFriend.val() == "" || $selectListTeam.val() == "")
     {
@@ -83,10 +90,11 @@ function addFriend()
       clearError($errorAddUser);
     } else {
       $.post(
-          'http://localhost:8000/team/'+ $selectListTeam.val() + '/adduser',
-          // 'http://www.geolocserver.vincentlagache.com/team/'+ $selectListTeam.val() + '/adduser',
+          // 'http://localhost:8000/team/'+ $selectListTeam.val() + '/adduser',
+          'http://www.geolocserver.vincentlagache.com/team/'+ $selectListTeam.val() + '/adduser',
           {
             mail : $mailFriend.val(),
+            invitFrom : myId
           },
           function(data){
             if(data['result'] == 'userAlreadyInTeam')
@@ -95,7 +103,7 @@ function addFriend()
               clearError($errorAddUser);
             } else if ( data['result'] == 'unknownUser')
             {
-              $errorAddUser.text("Cette personne n'est pas inscrite ( Envoi Mail !! )");
+              $errorAddUser.text("Cette personne n'est pas inscrite . Une invitation par mail va lui etre envoyé");
               clearError($errorAddUser);
             } else if ( data['result'] == 'addUser')
             {
@@ -107,8 +115,8 @@ function addFriend()
               html += "</tr>";
               $('#team'+ data['idTeam']).append(html);
               $deleteFriend = $('.imgDelete');
-              resetEvent();
-              $mailFriend.val("");
+              resetEvent(myId);
+              $addFriendForm[0].reset();
             } else
             {
               $errorAddUser.text("Cette équipe n'existe pas");

@@ -55,7 +55,7 @@
               <p></p>
             </div>
 
-            <form action="#" method="post" data-ajax="false">
+            <form action="#" method="post" data-ajax="false" id="connexionForm">
               <div class="ui-field-contain">
                 <label for="email">Email</label>
                 <input type="email"name="email" id="mailCo" value="">
@@ -100,7 +100,7 @@
               <p></p>
             </div>
 
-            <form action="#" method="post" data-ajax="false">
+            <form action="#" method="post" data-ajax="false" id="inscriptionForm">
 
               <div class="ui-field-contain">
                 <label for="name">Prénom</label>
@@ -185,6 +185,8 @@
           <div data-role="content">
             <div id="infoActivity">
             </div>
+            <div id="infosAboutApp">              
+            </div>
             <div id="actionActivity">
               <img src="img/stop_min.png" id="stopImg" class="imgActivity"/>
               <img src="img/pause_min.png" id="pauseImg" class="imgActivity"/>
@@ -255,7 +257,7 @@
                 </div>
 
                 <select class="team-select">
-                  <option value="" selected> Choisir une équipe </option>
+                  <option value ="0" selected="selected"> Choisir une équipe </option>
                 </select>
 
 
@@ -288,7 +290,7 @@
           <div data-role="content">
             <ul>
               <li>Changer Mot de passe / Mail</li>
-              <li>Info Compte</li>
+              <li>Info Compte (Nom , Inscription depuis le : )</li>
               <li>Suppresion du compte</li>
             </ul>
           </div>
