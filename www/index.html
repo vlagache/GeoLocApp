@@ -185,7 +185,7 @@
           <div data-role="content">
             <div id="infoActivity">
             </div>
-            <div id="infosAboutApp">              
+            <div id="infosAboutApp">
             </div>
             <div id="actionActivity">
               <img src="img/stop_min.png" id="stopImg" class="imgActivity"/>
@@ -293,6 +293,20 @@
               <li>Info Compte (Nom , Inscription depuis le : )</li>
               <li>Suppresion du compte</li>
             </ul>
+
+            <div class="ui-field-contain">
+              <label for="firebaseToken">Jeton Firebase</label>
+              <input type="text" name="firebaseToken" id="firebaseToken" value="">
+            </div>
+
+            <div class="ui-field-contain">
+              <input type="button" value="Token" id="receiveToken" />
+            </div>
+
+            <div class="ui-field-contain">
+              <input type="button" value="Notification" id="receiveNotif" />
+            </div>
+
           </div>
 
           <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -303,6 +317,7 @@
       </div>
 
       <script src="js/config.js"></script>
+      <script src="js/firebase.js"></script>
       <script src="js/teams.js"></script>
       <script src="js/position.js"></script>
       <script src="js/main.js"></script>

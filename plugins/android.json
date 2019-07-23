@@ -7,14 +7,17 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.vincentlagache.geolocsport"
+    },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "com.vincentlagache.geolocsport"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "com.vincentlagache.geolocsport"
     },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+    "cordova-plugin-firebase-lib": {
+      "PACKAGE_NAME": "com.vincentlagache.geolocsport"
     }
   },
   "dependent_plugins": {}
