@@ -32,6 +32,9 @@ function onDeviceReady() {
     $('#linksIndex').hide().delay(4000).fadeIn(1000);
 
 // ************ Inscription Form  ****************** //
+
+$device = new Device();
+
     $submitIns.tap(function(e){
       if($nameIns.val() == "" || $mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
       {
@@ -51,10 +54,11 @@ function onDeviceReady() {
               if ( data['result'] == 'Success')
               {
                   $.mobile.navigate("#user");
+                  $('#userName').text("Bonjour " + $nameIns.val());
                   $errorIns.text("");
                   $inscriptionForm[0].reset();
                   $userId = data['userId'];
-                  $('#userName').text("Bonjour " + $nameIns.val());
+                  $device.getToken($userId); // On envoie le token firebase lié a l'utilisateur.
               } else if ( data['result'] == 'WrongMail'){
                 $errorIns.text('Un compte est déja lié à cet email');
                 setTimeout(function(){
@@ -93,6 +97,7 @@ $submitCo.tap(function(e){
             $connexionForm[0].reset();
             $userId = data['userId'];
             $('#userName').text("Bonjour " + data['name']);
+            $device.getTokenAfterReinstall($userId); // On verifie si il y'a besoin d'enregistrer un nouveau token en cas de reinstallation
           } else if (data['result'] == 'WrongPassword') {
             $errorCo.text('Mauvais mot de passe');
             setTimeout(function(){
@@ -130,8 +135,7 @@ $submitCo.tap(function(e){
       $.mobile.navigate("#user");
     });
 // ******************** ACTIVITY ********************
- $loc = new GeoLoc();
-
+  $loc = new GeoLoc();
   $('#startImg').tap(function(e){
     $infosAboutApp.text("");
     $infosActivity.text("");
@@ -147,7 +151,6 @@ $submitCo.tap(function(e){
           } else if (data['result'] == 'activityExist')
           {
             $infosActivity.text('Activité en cours');
-            $loc.start($userId);
           } else if ( data['result'] == 'userHaveNoTeam')
           {
             let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"

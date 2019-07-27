@@ -35,3 +35,10 @@ var $addFriendForm = $('#addFriendForm');
     $createTeam = $('#createTeam');
     $nameNewTeam = $('#nameNewTeam');
     $errorNewTeam = $('#errorNewTeam');
+
+
+
+//*************** TEST FIREBASE
+    var $firebaseToken = $('#firebaseToken');
+        $receiveToken = $('#receiveToken');
+        $receiveNotif = $('#receiveNotif');

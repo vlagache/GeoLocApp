@@ -8,6 +8,7 @@ function clearError(errorDiv)
 function updateAllListTeams(myId)
 {
   // "http://localhost:8000/team/"+ $userId + " #listTeams "
+  // http://www.geolocserver.vincentlagache.com/team/"+ $userId + " #listTeams "
   $allListTeam.load("http://www.geolocserver.vincentlagache.com/team/"+ $userId + " #listTeams " , e => {
     $deleteFriend = $('.imgDelete');
     resetEvent(myId); // Active les listeners des icones de suppression.

@@ -1,11 +1,8 @@
-var $firebaseToken = $('#firebaseToken');
-    $receiveToken = $('#receiveToken');
-    $receiveNotif = $('#receiveNotif');
-
-
 
 $receiveToken.tap(function(e){
-  getToken();
+  $firebaseToken.val($device.getToken());
+  alert($device.getToken());
+  navigator.vibrate([3000]);
 });
 
 
@@ -13,15 +10,7 @@ $receiveNotif.tap(function(e){
   notificationOpen();
 });
 
-function getToken()
-{
-  window.FirebasePlugin.getToken(function(token) {
-      // save this server-side and use it to push notifications to this device
-      $firebaseToken.val(token);
-  }, function(error) {
-    alert(error);
-  });
-}
+
 
 
 function notificationOpen()

@@ -86,6 +86,7 @@ class GeoLoc {
     },
       (err) => {
       this.error(err)
+      $infosActivity.text(err.message);
     },
     this.options)
   }
