@@ -53,6 +53,27 @@ h2
 {
   display:flex;
 }
+#notifications
+{
+  position:relative;
+  top:5px;
+  left:20px;
+}
+#nbOfNotifications
+{
+  position: absolute;
+  top: 2%;
+  left:75%;
+  background: #ff962e;
+  border:1px solid #ff962e ;
+  color : black;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+
+}
 .arrowImg
 {
   width: 35px;
@@ -115,7 +136,6 @@ h2
 }
 #infoActivity
 {
-
   transform: translate(-50%,-45%);
   position: absolute;
   top: 45%;
@@ -125,6 +145,21 @@ h2
   letter-spacing: 2px;
   text-transform: uppercase;
   text-align: center;
+  font-weight: 600;
+  width: 85%;
+  height: 100px;
+}
+#errorGeolocation
+{
+  transform: translate(-50%,-45%);
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  font-family: 'Abel', sans-serif;
+  color:#ff962e;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: justify;
   font-weight: 600;
   width: 85%;
   height: 100px;

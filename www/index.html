@@ -142,7 +142,11 @@
 
       <div data-role="page" data-theme="a"  id="user">
 
-          <div data-role="header">
+          <div data-role="header" class="headerUser">
+            <div id="notifications">
+              <img src="img/notif_min.png" id="notificationImg"/>
+              <div id="nbOfNotifications"></div>
+            </div>
             <h1 class="headerH1">GEOLOC</h1>
           </div>
 
@@ -159,6 +163,7 @@
               <img src="img/setting_big.png"/ id="compteImg" class="imgBig">
               <p>Gestion du compte</p>
             </div>
+
           </div>
 
           <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -183,10 +188,10 @@
 
 
           <div data-role="content">
-            <div id="infoActivity">
-            </div>
-            <div id="infosAboutApp">
-            </div>
+            <div id="infoActivity"></div>
+            <div id="errorGeolocation"></div>
+            <div id="infosAboutApp"></div>
+
             <div id="actionActivity">
               <img src="img/stop_min.png" id="stopImg" class="imgActivity"/>
               <img src="img/pause_min.png" id="pauseImg" class="imgActivity"/>
@@ -293,20 +298,6 @@
               <li>Info Compte (Nom , Inscription depuis le : )</li>
               <li>Suppresion du compte</li>
             </ul>
-
-            <div class="ui-field-contain">
-              <label for="firebaseToken">Jeton Firebase</label>
-              <input type="text" name="firebaseToken" id="firebaseToken" value="">
-            </div>
-
-            <div class="ui-field-contain">
-              <input type="button" value="Token" id="receiveToken" />
-            </div>
-
-            <div class="ui-field-contain">
-              <input type="button" value="Notification" id="receiveNotif" />
-            </div>
-
           </div>
 
           <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -315,10 +306,30 @@
 
 
       </div>
+<!--
+******************** NOTIFICATIONS  ********************
+-->
+      <div data-role="page" data-theme="a"  id="notification">
+
+        <div data-role="header" class="headerUser" data-position="fixed" data-tap-toggle="false">
+          <img src="img/arrow_min.png" class="arrowImg"/>
+          <h1 class="headerH1">GEOLOC</h1>
+        </div><!-- /header -->
+
+          <div data-role="content">
+            Notifications
+          </div>
+
+          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h2>Notifications</h2>
+          </div>
+
+
+      </div>
 
       <script src="js/config.js"></script>
+      <script src="js/notification.js"></script>
       <script src="js/device.js"></script>
-      <script src="js/firebase.js"></script>
       <script src="js/teams.js"></script>
       <script src="js/position.js"></script>
       <script src="js/main.js"></script>

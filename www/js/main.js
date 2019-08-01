@@ -20,6 +20,11 @@ function activePage()
 }
 function onDeviceReady() {
 
+  $device = new Device();
+  $loc = new GeoLoc();
+  $notification = new Notification();
+
+
   // ********************  Anim HOME JQUERY ********************
     function blinkLogo()
     {
@@ -33,8 +38,11 @@ function onDeviceReady() {
 
 // ************ Inscription Form  ****************** //
 
-$device = new Device();
 
+
+    // $listener = new Listener();
+    // $listener.submit()
+    //
     $submitIns.tap(function(e){
       if($nameIns.val() == "" || $mailIns.val() == "" || $passwordIns.val() == "" || $confirmation.val() == "" )
       {
@@ -58,6 +66,7 @@ $device = new Device();
                   $errorIns.text("");
                   $inscriptionForm[0].reset();
                   $userId = data['userId'];
+                  $notification.getNumberOfNotifications($userId);
                   $device.getToken($userId); // On envoie le token firebase lié a l'utilisateur.
               } else if ( data['result'] == 'WrongMail'){
                 $errorIns.text('Un compte est déja lié à cet email');
@@ -97,6 +106,7 @@ $submitCo.tap(function(e){
             $connexionForm[0].reset();
             $userId = data['userId'];
             $('#userName').text("Bonjour " + data['name']);
+            $notification.getNumberOfNotifications($userId);
             $device.getTokenAfterReinstall($userId); // On verifie si il y'a besoin d'enregistrer un nouveau token en cas de reinstallation
           } else if (data['result'] == 'WrongPassword') {
             $errorCo.text('Mauvais mot de passe');
@@ -115,6 +125,10 @@ $submitCo.tap(function(e){
   }
 });
 // ******************** USER ********************
+
+    $('#notificationImg').tap(function(e){
+      $.mobile.navigate("#notification");
+    });
     $('#locationImg').tap(function(e){
       $.mobile.navigate("#activity");
     });
@@ -131,14 +145,16 @@ $submitCo.tap(function(e){
           $infosActivity.text("");
           $errorAddUser.text("");
           $infosAboutApp.text("");
+          $errorGeolocation.text("");
         },500)
       $.mobile.navigate("#user");
     });
 // ******************** ACTIVITY ********************
-  $loc = new GeoLoc();
+
   $('#startImg').tap(function(e){
     $infosAboutApp.text("");
     $infosActivity.text("");
+    $errorGeolocation.text("");
     $.post(
         // 'http://localhost:8000/activity/start/'+$userId,
         // 'http://localhost:8000/activity/start/1',
@@ -147,10 +163,15 @@ $submitCo.tap(function(e){
           if(data['result'] == 'startActivity')
           {
             $infosActivity.text('Activité en cours');
-            $loc.start($userId);
+            $loc.sendPositions($userId);
           } else if (data['result'] == 'activityExist')
           {
             $infosActivity.text('Activité en cours');
+            // $loc.sendPositions($userId);
+          } else if ( data['result'] == 'activityRestart')
+          {
+            $infosActivity.text('Reprise de l\'activité');
+            $loc.sendPositions($userId);
           } else if ( data['result'] == 'userHaveNoTeam')
           {
             let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"
@@ -183,12 +204,14 @@ $submitCo.tap(function(e){
 
   $('#pauseImg').tap(function(e){
     $infosActivity.text("");
+    $errorGeolocation.text("");
     $infosAboutApp.text("");
     $loc.pause($userId);
   });
 
   $('#stopImg').tap(function(e){
     $infosAboutApp.text("");
+    $errorGeolocation.text("");
     $infosActivity.text("");
     $.post(
         // 'http://localhost:8000/activity/delete/'+$userId,
@@ -199,6 +222,7 @@ $submitCo.tap(function(e){
           {
             $infosActivity.text('Arret de l\'activité');
             $infosAboutApp.text('Toutes les informations enregistrées pendant votre activité sur votre localisation géographique sont définitivement supprimés de nos serveurs lorsque vous arretez une activité');
+            $loc.stop();
           } else if (data['result'] == 'activityDoesntExist') {
             $infosActivity.text('Vous n\'avez lancé aucune activité');
           }

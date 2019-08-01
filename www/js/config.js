@@ -16,8 +16,11 @@ var $connexionForm = $('#connexionForm');
 
 var $userId;
 
+// ********************  USER ********************
+
 // ********************  Activity ********************
 var $infosActivity = $('#infoActivity');
+    $errorGeolocation = $('#errorGeolocation');
     $infosAboutApp = $('#infosAboutApp');
     $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
 
@@ -35,10 +38,3 @@ var $addFriendForm = $('#addFriendForm');
     $createTeam = $('#createTeam');
     $nameNewTeam = $('#nameNewTeam');
     $errorNewTeam = $('#errorNewTeam');
-
-
-
-//*************** TEST FIREBASE
-    var $firebaseToken = $('#firebaseToken');
-        $receiveToken = $('#receiveToken');
-        $receiveNotif = $('#receiveNotif');
