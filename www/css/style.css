@@ -213,17 +213,49 @@ tr{text-align: center;}
 .user{width: 75%;}
 .cross{width: 25%;}
 #errorAddUser,
-#errorNewTeam
+#errorNewTeam,
+#errorChangeMail,
+#errorChangePassword
 {
   text-align: center;
   height: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .imgDelete
 {
   height: 30px;
   width: 30px;
 }
+/* PAGE COMPTE */
+#accountInfos
+{
+  border-bottom: 1px dashed #f7991c;
+  padding-bottom : 15px;
+  text-align: center;
+  font-family: 'Abel', sans-serif;
+  color:#b0b0b0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+}
+#changeMailForm,
+#changePasswordForm
+{
+    border-bottom: 1px dashed #f7991c;
+}
+#changeMailForm p,
+#changePasswordForm p,
+#deleteAccount p
+{
+  text-align : center;
+  font-family: 'Abel', sans-serif;
+  color:#b0b0b0;
+  margin-top: 5%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-bottom : 15px;
+}
+
 
 /* PAGE NOTIFICATION */
 #allNotifications

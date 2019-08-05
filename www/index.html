@@ -293,14 +293,70 @@
         </div><!-- /header -->
 
           <div data-role="content">
-            <ul>
-              <li>Changer Mot de passe / Mail</li>
-              <li>Info Compte (Nom , Inscription depuis le : )</li>
-              <li>Suppresion du compte</li>
-            </ul>
+            <div id="accountInfos">
+              <div id="accountName"></div>
+              <div id="accountMail"></div>
+              <div id="accountInscriptionDate"></div>
+            </div>
+
+            <form action="#" method="post" data-ajax="false" id="changeMailForm">
+              <p>
+                Changer votre mail
+              </p>
+
+              <div id="errorChangeMail">
+                <p></p>
+              </div>
+
+              <div class="ui-field-contain">
+                <label for="newMail">Nouveau Mail</label>
+                <input type="text"name="newMail" id="newMail" value="">
+              </div>
+
+
+              <div class="ui-field-contain">
+                <input type="button" value="Changer d'email" id="changeMailButton" />
+              </div>
+
+            </form>
+
+            <form action="#" method="post" data-ajax="false" id="changePasswordForm">
+              <p>
+                Changer votre Mot de passe
+              </p>
+
+              <div id="errorChangePassword">
+                <p></p>
+              </div>
+
+              <div class="ui-field-contain">
+                <label for="oldPassword">Ancien mot de passe</label>
+                <input type="password"name="oldPassword" id="oldPassword" value="">
+              </div>
+
+              <div class="ui-field-contain">
+                <label for="newPassword">Nouveau mot de passe</label>
+                <input type="password"name="newPassword" id="newPassword" value="">
+              </div>
+
+              <div class="ui-field-contain">
+                <input type="button" value="Changer de mot de passe" id="changePasswordButton" />
+              </div>
+
+            </form>
+
+            <div id="deleteAccount">
+              <p>
+                Supprimer votre compte
+              </p>
+              <center>
+                <img src="img/deleteAcc_min.png" id="deleteAccImg"/>
+              </center>
+            </div>
+
           </div>
 
-          <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+          <div data-role="footer" data-tap-toggle="false">
             <h2>Gestion du compte</h2>
           </div>
 
@@ -317,7 +373,7 @@
         </div><!-- /header -->
 
           <div data-role="content">
-            <div id="allNotifications">              
+            <div id="allNotifications">
             </div>
           </div>
 
@@ -329,6 +385,7 @@
       </div>
 
       <script src="js/config.js"></script>
+      <script src="js/account.js"></script>
       <script src="js/notification.js"></script>
       <script src="js/device.js"></script>
       <script src="js/teams.js"></script>

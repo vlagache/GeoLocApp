@@ -23,6 +23,7 @@ function onDeviceReady() {
   $device = new Device();
   $loc = new GeoLoc();
   $notification = new Notification();
+  $account = new Account();
 
 
   // ********************  Anim HOME JQUERY ********************
@@ -139,7 +140,9 @@ $submitCo.tap(function(e){
       updateAllListTeams($userId);
     });
     $('#compteImg').tap(function(e){
+      $account.getInfos($userId);
       $.mobile.navigate("#compte");
+      // Chargement des infos sur le compte
 
     });
     $('.arrowImg').tap(function(e){
@@ -244,6 +247,19 @@ $submitCo.tap(function(e){
       $createTeam.tap(function(e){
         createNewTeam($userId);
       });
+
+// ******************** ACCOUNT ********************
+    $changeMailButton.tap(function(e){
+      $account.changeMail($userId);
+    })
+
+    $changePasswordButton.tap(function(e){
+      $account.changePassword($userId);
+    })
+
+    $('#deleteAccImg').tap(function(e){
+      $account.deleteAccount($userId);
+    })
 
 
 }

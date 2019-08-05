@@ -18,6 +18,17 @@ var $userId;
 
 // ********************  USER ********************
 var $allNotifications = $('#allNotifications');
+// ********************  COMPTE ********************
+var $accountName = $('#accountName');
+    $accountMail = $('#accountMail');
+    $accountInscriptionDate = $('#accountInscriptionDate');
+    $newMail = $('#newMail');
+    $changeMailButton = $('#changeMailButton');
+    $errorChangeMail = $('#errorChangeMail');
+    $errorChangePassword = $('#errorChangePassword');
+    $oldPassword = $('#oldPassword');
+    $newPassword = $('#newPassword');
+    $changePasswordButton = $('#changePasswordButton');
 // ********************  Activity ********************
 var $infosActivity = $('#infoActivity');
     $errorGeolocation = $('#errorGeolocation');
