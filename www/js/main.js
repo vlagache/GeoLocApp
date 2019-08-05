@@ -67,6 +67,7 @@ function onDeviceReady() {
                   $inscriptionForm[0].reset();
                   $userId = data['userId'];
                   $notification.getNumberOfNotifications($userId);
+                  $notification.displayNotification($userId);
                   $device.getToken($userId); // On envoie le token firebase lié a l'utilisateur.
               } else if ( data['result'] == 'WrongMail'){
                 $errorIns.text('Un compte est déja lié à cet email');
@@ -107,6 +108,7 @@ $submitCo.tap(function(e){
             $userId = data['userId'];
             $('#userName').text("Bonjour " + data['name']);
             $notification.getNumberOfNotifications($userId);
+            $notification.displayNotification($userId);
             $device.getTokenAfterReinstall($userId); // On verifie si il y'a besoin d'enregistrer un nouveau token en cas de reinstallation
           } else if (data['result'] == 'WrongPassword') {
             $errorCo.text('Mauvais mot de passe');
@@ -141,6 +143,8 @@ $submitCo.tap(function(e){
 
     });
     $('.arrowImg').tap(function(e){
+      $notification.getNumberOfNotifications($userId);
+      $notification.displayNotification($userId);
         setTimeout( () => {
           $infosActivity.text("");
           $errorAddUser.text("");

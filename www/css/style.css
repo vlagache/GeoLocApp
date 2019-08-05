@@ -224,3 +224,26 @@ tr{text-align: center;}
   height: 30px;
   width: 30px;
 }
+
+/* PAGE NOTIFICATION */
+#allNotifications
+{
+  text-align: center;
+  margin-bottom: 25px;
+}
+.activityOf
+{
+  text-align : center;
+  font-family: 'Abel', sans-serif;
+  color:#b0b0b0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top : 15px;
+  margin-bottom : 15px;
+  border-bottom: 1px dashed #f7991c;
+}
+.notificationContent
+{
+  font-size: 0.8em;
+  text-align: left;
+}

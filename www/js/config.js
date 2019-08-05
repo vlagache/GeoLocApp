@@ -17,7 +17,7 @@ var $connexionForm = $('#connexionForm');
 var $userId;
 
 // ********************  USER ********************
-
+var $allNotifications = $('#allNotifications');
 // ********************  Activity ********************
 var $infosActivity = $('#infoActivity');
     $errorGeolocation = $('#errorGeolocation');
