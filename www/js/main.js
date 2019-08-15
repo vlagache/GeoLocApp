@@ -24,6 +24,8 @@ function onDeviceReady() {
   $loc = new GeoLoc();
   $notification = new Notification();
   $account = new Account();
+  $alert = new Alert();
+
 
 
   // ********************  Anim HOME JQUERY ********************
@@ -67,8 +69,9 @@ function onDeviceReady() {
                   $errorIns.text("");
                   $inscriptionForm[0].reset();
                   $userId = data['userId'];
+                  // $tokenApi = data['token'];
                   $notification.getNumberOfNotifications($userId);
-                  $notification.displayNotification($userId);
+                  $alert.getNumberOfAlerts($userId);
                   $device.getToken($userId); // On envoie le token firebase lié a l'utilisateur.
               } else if ( data['result'] == 'WrongMail'){
                 $errorIns.text('Un compte est déja lié à cet email');
@@ -109,7 +112,7 @@ $submitCo.tap(function(e){
             $userId = data['userId'];
             $('#userName').text("Bonjour " + data['name']);
             $notification.getNumberOfNotifications($userId);
-            $notification.displayNotification($userId);
+            $alert.getNumberOfAlerts($userId);
             $device.getTokenAfterReinstall($userId); // On verifie si il y'a besoin d'enregistrer un nouveau token en cas de reinstallation
           } else if (data['result'] == 'WrongPassword') {
             $errorCo.text('Mauvais mot de passe');
@@ -130,8 +133,13 @@ $submitCo.tap(function(e){
 // ******************** USER ********************
 
     $('#notificationImg').tap(function(e){
+      $notification.displayNotification($userId);
       $.mobile.navigate("#notification");
     });
+    $('#alertImg').tap(function(e){
+      $alert.displayAlerts($userId);
+      $.mobile.navigate("#alert");
+    })
     $('#locationImg').tap(function(e){
       $.mobile.navigate("#activity");
     });
@@ -148,11 +156,13 @@ $submitCo.tap(function(e){
     $('.arrowImg').tap(function(e){
       $notification.getNumberOfNotifications($userId);
       $notification.displayNotification($userId);
+      $alert.getNumberOfAlerts($userId);
         setTimeout( () => {
           $infosActivity.text("");
           $errorAddUser.text("");
           $infosAboutApp.text("");
           $errorGeolocation.text("");
+          $('#listAlerts').text("");
         },500)
       $.mobile.navigate("#user");
     });
@@ -178,7 +188,7 @@ $submitCo.tap(function(e){
           } else if ( data['result'] == 'activityRestart')
           {
             $infosActivity.text('Reprise de l\'activité');
-            $loc.sendPositions($userId);
+            $loc.restart(userId);
           } else if ( data['result'] == 'userHaveNoTeam')
           {
             let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"
@@ -251,15 +261,14 @@ $submitCo.tap(function(e){
 // ******************** ACCOUNT ********************
     $changeMailButton.tap(function(e){
       $account.changeMail($userId);
-    })
+    });
 
     $changePasswordButton.tap(function(e){
       $account.changePassword($userId);
-    })
+    });
 
     $('#deleteAccImg').tap(function(e){
       $account.deleteAccount($userId);
-    })
-
+    });
 
 }

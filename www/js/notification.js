@@ -7,7 +7,7 @@ class Notification {
       "http://www.geolocserver.vincentlagache.com/notification/number/" +userId,
       function(data)
       {
-        $('#nbOfNotifications').text(data['nbOfNotifications']);
+        $('#nbOfNonReadNotifications').text(data['nbOfNonReadNotifications']);
       },
       'json'
     );

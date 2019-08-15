@@ -61,12 +61,11 @@ class GeoLoc {
     console.log("Latitude : " +position.coords.latitude);
     console.log("Longitude : " +position.coords.longitude);
   }
-  sendPositions(userId)
+  sendPosition(userId)
   {
-
+    // Envoyer la position actuelle
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.interval = setInterval( () => {
           $.post(
             // 'http://localhost:8000/position/' +userId,
             'http://www.geolocserver.vincentlagache.com/position/' +userId,
@@ -85,7 +84,6 @@ class GeoLoc {
             },
             'json'
           );
-        },10000)
     },
       (err) => {
       this.error(err)
@@ -104,6 +102,15 @@ class GeoLoc {
     },
     this.options)
   }
+
+  sendPositions(userId)
+  {
+    this.sendPosition(userId); // Envoyer la position au démarrage , puis tous les x millisecondes
+    this.interval = setInterval ( () => {
+      this.sendPosition(userId);
+    },10000)
+  }
+
   pause(userId)
   {
     let myobj = this;
@@ -122,6 +129,13 @@ class GeoLoc {
       },
       'json'
     );
+  }
+
+  restart(userId)
+  {
+    this.interval = setInterval ( () => {
+      this.sendPosition(userId);
+    },10000)
   }
   stop()
   {

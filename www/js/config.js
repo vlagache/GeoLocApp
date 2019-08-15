@@ -15,6 +15,7 @@ var $connexionForm = $('#connexionForm');
     $errorCo = $('#errorFormCo');
 
 var $userId;
+var $tokenApi;
 
 // ********************  USER ********************
 var $allNotifications = $('#allNotifications');
@@ -34,6 +35,7 @@ var $infosActivity = $('#infoActivity');
     $errorGeolocation = $('#errorGeolocation');
     $infosAboutApp = $('#infosAboutApp');
     $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
+
 
 
 
