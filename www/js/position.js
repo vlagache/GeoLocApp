@@ -108,7 +108,7 @@ class GeoLoc {
     this.sendPosition(userId); // Envoyer la position au démarrage , puis tous les x millisecondes
     this.interval = setInterval ( () => {
       this.sendPosition(userId);
-    },10000)
+    },120000)
   }
 
   pause(userId)
@@ -135,7 +135,7 @@ class GeoLoc {
   {
     this.interval = setInterval ( () => {
       this.sendPosition(userId);
-    },10000)
+    },120000)
   }
   stop()
   {

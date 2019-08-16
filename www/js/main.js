@@ -188,7 +188,7 @@ $submitCo.tap(function(e){
           } else if ( data['result'] == 'activityRestart')
           {
             $infosActivity.text('Reprise de l\'activité');
-            $loc.restart(userId);
+            $loc.restart($userId);
           } else if ( data['result'] == 'userHaveNoTeam')
           {
             let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"

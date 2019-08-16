@@ -19,6 +19,7 @@ var $tokenApi;
 
 // ********************  USER ********************
 var $allNotifications = $('#allNotifications');
+    $allAlerts = $('#allAlerts');
 // ********************  COMPTE ********************
 var $accountName = $('#accountName');
     $accountMail = $('#accountMail');
@@ -35,10 +36,6 @@ var $infosActivity = $('#infoActivity');
     $errorGeolocation = $('#errorGeolocation');
     $infosAboutApp = $('#infosAboutApp');
     $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
-
-
-
-
 
 // ********************  GROUP ********************
 var $addFriendForm = $('#addFriendForm');
