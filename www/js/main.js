@@ -29,6 +29,13 @@ function onDeviceReady() {
 
 
   // ********************  Anim HOME JQUERY ********************
+    function ajaxSetupHeader(token)
+    {
+      $.ajaxSetup({
+        headers: {'X-AUTH-TOKEN' : token},
+      });
+    }
+
     function blinkLogo()
     {
         $('#logo').fadeOut(900).delay(300).fadeIn(800);
@@ -69,7 +76,8 @@ function onDeviceReady() {
                   $errorIns.text("");
                   $inscriptionForm[0].reset();
                   $userId = data['userId'];
-                  // $tokenApi = data['token'];
+                  $apiToken = data['apiToken'];
+                  ajaxSetupHeader($apiToken);
                   $notification.getNumberOfNotifications($userId);
                   $alert.getNumberOfAlerts($userId);
                   $device.getToken($userId); // On envoie le token firebase lié a l'utilisateur.
@@ -110,6 +118,8 @@ $submitCo.tap(function(e){
             $errorCo.text("");
             $connexionForm[0].reset();
             $userId = data['userId'];
+            $apiToken = data['apiToken'];
+            ajaxSetupHeader($apiToken); 
             $('#userName').text("Bonjour " + data['name']);
             $notification.getNumberOfNotifications($userId);
             $alert.getNumberOfAlerts($userId);
@@ -128,6 +138,7 @@ $submitCo.tap(function(e){
         },
         'json'
     );
+
   }
 });
 // ******************** USER ********************
@@ -173,8 +184,6 @@ $submitCo.tap(function(e){
     $infosActivity.text("");
     $errorGeolocation.text("");
     $.post(
-        // 'http://localhost:8000/activity/start/'+$userId,
-        // 'http://localhost:8000/activity/start/1',
         'http://www.geolocserver.vincentlagache.com/activity/start/' +$userId,
         function(data){
           if(data['result'] == 'startActivity')
@@ -231,8 +240,6 @@ $submitCo.tap(function(e){
     $errorGeolocation.text("");
     $infosActivity.text("");
     $.post(
-        // 'http://localhost:8000/activity/delete/'+$userId,
-        // 'http://localhost:8000/activity/delete/1',
         'http://www.geolocserver.vincentlagache.com/activity/delete/'+$userId,
         function(data){
           if(data['result'] == 'deleteActivity')
@@ -269,6 +276,43 @@ $submitCo.tap(function(e){
 
     $('#deleteAccImg').tap(function(e){
       $account.deleteAccount($userId);
+    });
+
+
+    // $.ajaxSetup({
+    //   headers: {'X-AUTH-TOKEN' : 'BLABLA'},
+    // });
+
+    $('#apiToken').tap(function(e){
+
+      $.ajax({
+          url: "http://localhost:8000/header",
+          headers: { 'X-AUTH-TOKEN' : 'BLABLA' },
+        }).done(function(data) {
+             $('#load').html(data);
+       });
+      // 1
+      // $('#load').load("http://localhost:8000/load");
+      // 2
+      // $.post(
+      //     'http://localhost:8000/header',
+      //     function(data){
+      //       console.log(data);
+      //     },
+      //     'json'
+      // );
+      // 3
+      // $.ajax({
+      //    url : 'http://localhost:8000/header',
+      //    headers: { 'X-AUTH-TOKEN' : 'BLABLA' },
+      //    type : 'POST',
+      //    data: les données qu'on envoie
+      //    dataType : 'json', // On désire recevoir du HTML
+      //    success : function(data){ // code_html contient le HTML renvoyé
+      //      console.log(data);
+      //    }
+      // });
+
     });
 
 }

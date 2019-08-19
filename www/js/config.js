@@ -15,7 +15,7 @@ var $connexionForm = $('#connexionForm');
     $errorCo = $('#errorFormCo');
 
 var $userId;
-var $tokenApi;
+var $apiToken;
 
 // ********************  USER ********************
 var $allNotifications = $('#allNotifications');

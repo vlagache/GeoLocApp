@@ -7,8 +7,6 @@ function clearError(errorDiv)
 
 function updateAllListTeams(myId)
 {
-  // "http://localhost:8000/team/"+ $userId + " #listTeams "
-  // http://www.geolocserver.vincentlagache.com/team/"+ $userId + " #listTeams "
   $allListTeam.load("http://www.geolocserver.vincentlagache.com/team/"+ $userId + " #listTeams " , e => {
     $deleteFriend = $('.imgDelete');
     resetEvent(myId); // Active les listeners des icones de suppression.
@@ -17,7 +15,6 @@ function updateAllListTeams(myId)
 }
 function updateAllNameTeams()
 {
-  // "http://localhost:8000/team/"+ $userId + " option"
   $selectListTeam.load("http://www.geolocserver.vincentlagache.com/team/" + $userId + "option" )
 }
 
@@ -30,7 +27,6 @@ function createNewTeam(userId)
   } else
   {
     $.post(
-        // 'http://localhost:8000/team/create/' +userId,
         'http://www.geolocserver.vincentlagache.com/team/create/' +userId,
         {
           nameTeam : $nameNewTeam.val(),

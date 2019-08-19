@@ -67,7 +67,6 @@ class GeoLoc {
     navigator.geolocation.getCurrentPosition(
       (position) => {
           $.post(
-            // 'http://localhost:8000/position/' +userId,
             'http://www.geolocserver.vincentlagache.com/position/' +userId,
             {
               latitude : position.coords.latitude,
