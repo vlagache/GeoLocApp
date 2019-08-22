@@ -1,5 +1,4 @@
 # GeoLocApp
-Application Cordova P5
 Partie Client de l'application GeoLoc - Cordova 9.0.0 - Android
 *******************
 
@@ -7,7 +6,8 @@ __Déploiement__
 
 - Installer les fichiers requis pour le dévéloppement d'une application Cordova Android : https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support
 - Installer la CLI Cordova : https://cordova.apache.org/docs/en/latest/guide/cli/index.html
-- ```
+-
+```
 git clone https://github.com/vlagache/GeoLocApp.git
 ```
 - Créer un projet Firebase & ajouter le fichier de configuration google-services.json à la racine du projet (https://firebase.google.com/docs/android/setup )
