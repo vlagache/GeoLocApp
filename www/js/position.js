@@ -1,45 +1,3 @@
-// var intervalLocation;
-// var options = {
-//   enableHighAccuracy: true,
-//   timeout: 10000,
-//   maximumAge: 0
-// }
-//
-// function error(err)
-// {
-//   console.warn(`ERREUR (${err.code}): ${err.message}`);
-// }
-//
-// function startLocation(userId)
-// {
-//   navigator.geolocation.getCurrentPosition((position) => {
-//     intervalLocation = setInterval( () => {
-//       $.post(
-//         'http://localhost:8000/position/' +userId,
-//         // 'http://www.geolocserver.vincentlagache.com/position/' +userId,
-//         {
-//           latitude : position.coords.latitude,
-//           longitude  : position.coords.longitude
-//         },
-//         function(data)
-//         {
-//           if(data['result'] == 'PositionSave')
-//           {
-//             console.log("Position Sauvegardé BDD");
-//           }
-//         },
-//         'json'
-//       );
-//     },5000)
-//   }
-//   ,error,options);
-// }
-// function pauseLocation()
-// {
-//   clearInterval(intervalLocation);
-// }
-
-
 class GeoLoc {
 
   constructor()
@@ -92,8 +50,6 @@ class GeoLoc {
         $infosActivity.text("");
         $errorGeolocation.text(" ATTENTION : Vous n'avez pas autorisé la géolocation . Veuillez relancez l'activité en autorisant l'application à accéder à la position de votre téléphone");
         $.post(
-            // 'http://localhost:8000/activity/delete/'+userId,
-            // 'http://localhost:8000/activity/delete/1',
             'http://www.geolocserver.vincentlagache.com/activity/delete/'+userId,
             'json'
         );
@@ -114,7 +70,6 @@ class GeoLoc {
   {
     let myobj = this;
     $.post(
-      // 'http://localhost:8000/activity/pause/' +userId,
       'http://www.geolocserver.vincentlagache.com/activity/pause/' +userId,
       function(data)
       {

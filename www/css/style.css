@@ -104,11 +104,6 @@ h2
   width: 35px;
   height: 35px;
 }
-.burger
-{
-  background-color: #0f0f0f !important;
-  border: none !important;
-}
 #contentUserView
 {
   width: 300px;
@@ -143,12 +138,6 @@ h2
 
   color:red;
 }
-/* .fixedFooter
-{
-  position:fixed;
-  bottom:0;
-} */
-
 /* PAGE ACTIVITY */
 #actionActivity
 {

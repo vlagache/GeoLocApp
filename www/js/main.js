@@ -119,7 +119,7 @@ $submitCo.tap(function(e){
             $connexionForm[0].reset();
             $userId = data['userId'];
             $apiToken = data['apiToken'];
-            ajaxSetupHeader($apiToken); 
+            ajaxSetupHeader($apiToken);
             $('#userName').text("Bonjour " + data['name']);
             $notification.getNumberOfNotifications($userId);
             $alert.getNumberOfAlerts($userId);
@@ -200,25 +200,12 @@ $submitCo.tap(function(e){
             $loc.restart($userId);
           } else if ( data['result'] == 'userHaveNoTeam')
           {
-            let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"
+            let html = "Vous n'avez aucune équipe . Le but de cette application est d'alerter vos proches . Vous pouvez créer une équipe dans la section Groupe"
             $infosActivity.append(html);
-
-            $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
-
-            $noFriendsOrTeamLink.tap(function(e){
-              updateAllListTeams($userId);
-            });
-
           } else if ( data['result'] == 'noFriendInYourTeam')
           {
-            let html = "Vous n'avez ajouté aucun amis dans vos équipes . Le but de cette application est d'alerter vos proches . Vous pouvez ajouter des amis ici : <a href='#group' class='noFriendsOrTeamLink'> Groupes </a>"
+            let html = "Vous n'avez ajouté aucun amis dans vos équipes . Le but de cette application est d'alerter vos proches . Vous pouvez ajouter des amis dans la section Groupe"
             $infosActivity.append(html);
-
-            $noFriendsOrTeamLink = $('.noFriendsOrTeamLink');
-
-            $noFriendsOrTeamLink.tap(function(e){
-              updateAllListTeams($userId);
-            });
           }
         },
         'json'
@@ -277,42 +264,4 @@ $submitCo.tap(function(e){
     $('#deleteAccImg').tap(function(e){
       $account.deleteAccount($userId);
     });
-
-
-    // $.ajaxSetup({
-    //   headers: {'X-AUTH-TOKEN' : 'BLABLA'},
-    // });
-
-    $('#apiToken').tap(function(e){
-
-      $.ajax({
-          url: "http://localhost:8000/header",
-          headers: { 'X-AUTH-TOKEN' : 'BLABLA' },
-        }).done(function(data) {
-             $('#load').html(data);
-       });
-      // 1
-      // $('#load').load("http://localhost:8000/load");
-      // 2
-      // $.post(
-      //     'http://localhost:8000/header',
-      //     function(data){
-      //       console.log(data);
-      //     },
-      //     'json'
-      // );
-      // 3
-      // $.ajax({
-      //    url : 'http://localhost:8000/header',
-      //    headers: { 'X-AUTH-TOKEN' : 'BLABLA' },
-      //    type : 'POST',
-      //    data: les données qu'on envoie
-      //    dataType : 'json', // On désire recevoir du HTML
-      //    success : function(data){ // code_html contient le HTML renvoyé
-      //      console.log(data);
-      //    }
-      // });
-
-    });
-
 }
